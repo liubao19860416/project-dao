@@ -1,0 +1,1160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.saike.grape.sql.mapper.TCouponMapper">
+  <resultMap id="BaseResultMap" type="com.saike.grape.sql.po.TCoupon">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="fitToMinKm" jdbcType="INTEGER" property="fittominkm" />
+    <result column="fitToMaxKm" jdbcType="INTEGER" property="fittomaxkm" />
+    <result column="fitToMinDaysUsed" jdbcType="INTEGER" property="fittomindaysused" />
+    <result column="fitToMaxDaysUsed" jdbcType="INTEGER" property="fittomaxdaysused" />
+    <result column="fitToEmissionVolume" jdbcType="VARCHAR" property="fittoemissionvolume" />
+    <result column="fitToVehicleScope" jdbcType="VARCHAR" property="fittovehiclescope" />
+    <result column="fitToCity" jdbcType="VARCHAR" property="fittocity" />
+    <result column="beginDatetime" jdbcType="TIMESTAMP" property="begindatetime" />
+    <result column="endDatetime" jdbcType="TIMESTAMP" property="enddatetime" />
+    <result column="validInDays" jdbcType="BIGINT" property="validindays" />
+    <result column="moneyAmount" jdbcType="REAL" property="moneyamount" />
+    <result column="color1" jdbcType="VARCHAR" property="color1" />
+    <result column="color2" jdbcType="VARCHAR" property="color2" />
+    <result column="ruleBrief" jdbcType="VARCHAR" property="rulebrief" />
+    <result column="actived" jdbcType="BIT" property="actived" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+    <result column="createdDatetime" jdbcType="TIMESTAMP" property="createddatetime" />
+    <result column="updatedDatetime" jdbcType="TIMESTAMP" property="updateddatetime" />
+    <result column="fitToDealerCode" jdbcType="VARCHAR" property="fittodealercode" />
+    <result column="useKmValue" jdbcType="INTEGER" property="usekmvalue" />
+    <result column="typeCode" jdbcType="VARCHAR" property="typecode" />
+    <result column="ruleString" jdbcType="VARCHAR" property="rulestring" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.saike.grape.sql.po.TCouponWithBLOBs">
+    <result column="ruleDetail" jdbcType="LONGVARCHAR" property="ruledetail" />
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, code, name, fitToMinKm, fitToMaxKm, fitToMinDaysUsed, fitToMaxDaysUsed, fitToEmissionVolume, 
+    fitToVehicleScope, fitToCity, beginDatetime, endDatetime, validInDays, moneyAmount, 
+    color1, color2, ruleBrief, actived, deleted, createdDatetime, updatedDatetime, fitToDealerCode, 
+    useKmValue, typeCode, ruleString
+  </sql>
+  <sql id="Blob_Column_List">
+    ruleDetail, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_coupon
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_coupon
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.saike.grape.sql.po.TCouponWithBLOBs">
+    insert into t_coupon (id, code, name, 
+      fitToMinKm, fitToMaxKm, fitToMinDaysUsed, 
+      fitToMaxDaysUsed, fitToEmissionVolume, 
+      fitToVehicleScope, fitToCity, beginDatetime, 
+      endDatetime, validInDays, moneyAmount, 
+      color1, color2, ruleBrief, 
+      actived, deleted, createdDatetime, 
+      updatedDatetime, fitToDealerCode, useKmValue, 
+      typeCode, ruleString, ruleDetail, 
+      description)
+    values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{fittominkm,jdbcType=INTEGER}, #{fittomaxkm,jdbcType=INTEGER}, #{fittomindaysused,jdbcType=INTEGER}, 
+      #{fittomaxdaysused,jdbcType=INTEGER}, #{fittoemissionvolume,jdbcType=VARCHAR}, 
+      #{fittovehiclescope,jdbcType=VARCHAR}, #{fittocity,jdbcType=VARCHAR}, #{begindatetime,jdbcType=TIMESTAMP}, 
+      #{enddatetime,jdbcType=TIMESTAMP}, #{validindays,jdbcType=BIGINT}, #{moneyamount,jdbcType=REAL}, 
+      #{color1,jdbcType=VARCHAR}, #{color2,jdbcType=VARCHAR}, #{rulebrief,jdbcType=VARCHAR}, 
+      #{actived,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{createddatetime,jdbcType=TIMESTAMP}, 
+      #{updateddatetime,jdbcType=TIMESTAMP}, #{fittodealercode,jdbcType=VARCHAR}, #{usekmvalue,jdbcType=INTEGER}, 
+      #{typecode,jdbcType=VARCHAR}, #{rulestring,jdbcType=VARCHAR}, #{ruledetail,jdbcType=LONGVARCHAR}, 
+      #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.saike.grape.sql.po.TCouponWithBLOBs">
+    insert into t_coupon
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="fittominkm != null">
+        fitToMinKm,
+      </if>
+      <if test="fittomaxkm != null">
+        fitToMaxKm,
+      </if>
+      <if test="fittomindaysused != null">
+        fitToMinDaysUsed,
+      </if>
+      <if test="fittomaxdaysused != null">
+        fitToMaxDaysUsed,
+      </if>
+      <if test="fittoemissionvolume != null">
+        fitToEmissionVolume,
+      </if>
+      <if test="fittovehiclescope != null">
+        fitToVehicleScope,
+      </if>
+      <if test="fittocity != null">
+        fitToCity,
+      </if>
+      <if test="begindatetime != null">
+        beginDatetime,
+      </if>
+      <if test="enddatetime != null">
+        endDatetime,
+      </if>
+      <if test="validindays != null">
+        validInDays,
+      </if>
+      <if test="moneyamount != null">
+        moneyAmount,
+      </if>
+      <if test="color1 != null">
+        color1,
+      </if>
+      <if test="color2 != null">
+        color2,
+      </if>
+      <if test="rulebrief != null">
+        ruleBrief,
+      </if>
+      <if test="actived != null">
+        actived,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="createddatetime != null">
+        createdDatetime,
+      </if>
+      <if test="updateddatetime != null">
+        updatedDatetime,
+      </if>
+      <if test="fittodealercode != null">
+        fitToDealerCode,
+      </if>
+      <if test="usekmvalue != null">
+        useKmValue,
+      </if>
+      <if test="typecode != null">
+        typeCode,
+      </if>
+      <if test="rulestring != null">
+        ruleString,
+      </if>
+      <if test="ruledetail != null">
+        ruleDetail,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="fittominkm != null">
+        #{fittominkm,jdbcType=INTEGER},
+      </if>
+      <if test="fittomaxkm != null">
+        #{fittomaxkm,jdbcType=INTEGER},
+      </if>
+      <if test="fittomindaysused != null">
+        #{fittomindaysused,jdbcType=INTEGER},
+      </if>
+      <if test="fittomaxdaysused != null">
+        #{fittomaxdaysused,jdbcType=INTEGER},
+      </if>
+      <if test="fittoemissionvolume != null">
+        #{fittoemissionvolume,jdbcType=VARCHAR},
+      </if>
+      <if test="fittovehiclescope != null">
+        #{fittovehiclescope,jdbcType=VARCHAR},
+      </if>
+      <if test="fittocity != null">
+        #{fittocity,jdbcType=VARCHAR},
+      </if>
+      <if test="begindatetime != null">
+        #{begindatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enddatetime != null">
+        #{enddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validindays != null">
+        #{validindays,jdbcType=BIGINT},
+      </if>
+      <if test="moneyamount != null">
+        #{moneyamount,jdbcType=REAL},
+      </if>
+      <if test="color1 != null">
+        #{color1,jdbcType=VARCHAR},
+      </if>
+      <if test="color2 != null">
+        #{color2,jdbcType=VARCHAR},
+      </if>
+      <if test="rulebrief != null">
+        #{rulebrief,jdbcType=VARCHAR},
+      </if>
+      <if test="actived != null">
+        #{actived,jdbcType=BIT},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+      <if test="createddatetime != null">
+        #{createddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateddatetime != null">
+        #{updateddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fittodealercode != null">
+        #{fittodealercode,jdbcType=VARCHAR},
+      </if>
+      <if test="usekmvalue != null">
+        #{usekmvalue,jdbcType=INTEGER},
+      </if>
+      <if test="typecode != null">
+        #{typecode,jdbcType=VARCHAR},
+      </if>
+      <if test="rulestring != null">
+        #{rulestring,jdbcType=VARCHAR},
+      </if>
+      <if test="ruledetail != null">
+        #{ruledetail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.saike.grape.sql.po.TCouponWithBLOBs">
+    update t_coupon
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="fittominkm != null">
+        fitToMinKm = #{fittominkm,jdbcType=INTEGER},
+      </if>
+      <if test="fittomaxkm != null">
+        fitToMaxKm = #{fittomaxkm,jdbcType=INTEGER},
+      </if>
+      <if test="fittomindaysused != null">
+        fitToMinDaysUsed = #{fittomindaysused,jdbcType=INTEGER},
+      </if>
+      <if test="fittomaxdaysused != null">
+        fitToMaxDaysUsed = #{fittomaxdaysused,jdbcType=INTEGER},
+      </if>
+      <if test="fittoemissionvolume != null">
+        fitToEmissionVolume = #{fittoemissionvolume,jdbcType=VARCHAR},
+      </if>
+      <if test="fittovehiclescope != null">
+        fitToVehicleScope = #{fittovehiclescope,jdbcType=VARCHAR},
+      </if>
+      <if test="fittocity != null">
+        fitToCity = #{fittocity,jdbcType=VARCHAR},
+      </if>
+      <if test="begindatetime != null">
+        beginDatetime = #{begindatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enddatetime != null">
+        endDatetime = #{enddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validindays != null">
+        validInDays = #{validindays,jdbcType=BIGINT},
+      </if>
+      <if test="moneyamount != null">
+        moneyAmount = #{moneyamount,jdbcType=REAL},
+      </if>
+      <if test="color1 != null">
+        color1 = #{color1,jdbcType=VARCHAR},
+      </if>
+      <if test="color2 != null">
+        color2 = #{color2,jdbcType=VARCHAR},
+      </if>
+      <if test="rulebrief != null">
+        ruleBrief = #{rulebrief,jdbcType=VARCHAR},
+      </if>
+      <if test="actived != null">
+        actived = #{actived,jdbcType=BIT},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+      <if test="createddatetime != null">
+        createdDatetime = #{createddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateddatetime != null">
+        updatedDatetime = #{updateddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fittodealercode != null">
+        fitToDealerCode = #{fittodealercode,jdbcType=VARCHAR},
+      </if>
+      <if test="usekmvalue != null">
+        useKmValue = #{usekmvalue,jdbcType=INTEGER},
+      </if>
+      <if test="typecode != null">
+        typeCode = #{typecode,jdbcType=VARCHAR},
+      </if>
+      <if test="rulestring != null">
+        ruleString = #{rulestring,jdbcType=VARCHAR},
+      </if>
+      <if test="ruledetail != null">
+        ruleDetail = #{ruledetail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.saike.grape.sql.po.TCouponWithBLOBs">
+    update t_coupon
+    set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      fitToMinKm = #{fittominkm,jdbcType=INTEGER},
+      fitToMaxKm = #{fittomaxkm,jdbcType=INTEGER},
+      fitToMinDaysUsed = #{fittomindaysused,jdbcType=INTEGER},
+      fitToMaxDaysUsed = #{fittomaxdaysused,jdbcType=INTEGER},
+      fitToEmissionVolume = #{fittoemissionvolume,jdbcType=VARCHAR},
+      fitToVehicleScope = #{fittovehiclescope,jdbcType=VARCHAR},
+      fitToCity = #{fittocity,jdbcType=VARCHAR},
+      beginDatetime = #{begindatetime,jdbcType=TIMESTAMP},
+      endDatetime = #{enddatetime,jdbcType=TIMESTAMP},
+      validInDays = #{validindays,jdbcType=BIGINT},
+      moneyAmount = #{moneyamount,jdbcType=REAL},
+      color1 = #{color1,jdbcType=VARCHAR},
+      color2 = #{color2,jdbcType=VARCHAR},
+      ruleBrief = #{rulebrief,jdbcType=VARCHAR},
+      actived = #{actived,jdbcType=BIT},
+      deleted = #{deleted,jdbcType=BIT},
+      createdDatetime = #{createddatetime,jdbcType=TIMESTAMP},
+      updatedDatetime = #{updateddatetime,jdbcType=TIMESTAMP},
+      fitToDealerCode = #{fittodealercode,jdbcType=VARCHAR},
+      useKmValue = #{usekmvalue,jdbcType=INTEGER},
+      typeCode = #{typecode,jdbcType=VARCHAR},
+      ruleString = #{rulestring,jdbcType=VARCHAR},
+      ruleDetail = #{ruledetail,jdbcType=LONGVARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.saike.grape.sql.po.TCoupon">
+    update t_coupon
+    set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      fitToMinKm = #{fittominkm,jdbcType=INTEGER},
+      fitToMaxKm = #{fittomaxkm,jdbcType=INTEGER},
+      fitToMinDaysUsed = #{fittomindaysused,jdbcType=INTEGER},
+      fitToMaxDaysUsed = #{fittomaxdaysused,jdbcType=INTEGER},
+      fitToEmissionVolume = #{fittoemissionvolume,jdbcType=VARCHAR},
+      fitToVehicleScope = #{fittovehiclescope,jdbcType=VARCHAR},
+      fitToCity = #{fittocity,jdbcType=VARCHAR},
+      beginDatetime = #{begindatetime,jdbcType=TIMESTAMP},
+      endDatetime = #{enddatetime,jdbcType=TIMESTAMP},
+      validInDays = #{validindays,jdbcType=BIGINT},
+      moneyAmount = #{moneyamount,jdbcType=REAL},
+      color1 = #{color1,jdbcType=VARCHAR},
+      color2 = #{color2,jdbcType=VARCHAR},
+      ruleBrief = #{rulebrief,jdbcType=VARCHAR},
+      actived = #{actived,jdbcType=BIT},
+      deleted = #{deleted,jdbcType=BIT},
+      createdDatetime = #{createddatetime,jdbcType=TIMESTAMP},
+      updatedDatetime = #{updateddatetime,jdbcType=TIMESTAMP},
+      fitToDealerCode = #{fittodealercode,jdbcType=VARCHAR},
+      useKmValue = #{usekmvalue,jdbcType=INTEGER},
+      typeCode = #{typecode,jdbcType=VARCHAR},
+      ruleString = #{rulestring,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.saike.grape.sql.po.TCoupon">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="fitToMinKm" jdbcType="INTEGER" property="fittominkm" />
+    <result column="fitToMaxKm" jdbcType="INTEGER" property="fittomaxkm" />
+    <result column="fitToMinDaysUsed" jdbcType="INTEGER" property="fittomindaysused" />
+    <result column="fitToMaxDaysUsed" jdbcType="INTEGER" property="fittomaxdaysused" />
+    <result column="fitToEmissionVolume" jdbcType="VARCHAR" property="fittoemissionvolume" />
+    <result column="fitToVehicleScope" jdbcType="VARCHAR" property="fittovehiclescope" />
+    <result column="fitToCity" jdbcType="VARCHAR" property="fittocity" />
+    <result column="beginDatetime" jdbcType="TIMESTAMP" property="begindatetime" />
+    <result column="endDatetime" jdbcType="TIMESTAMP" property="enddatetime" />
+    <result column="validInDays" jdbcType="BIGINT" property="validindays" />
+    <result column="moneyAmount" jdbcType="REAL" property="moneyamount" />
+    <result column="color1" jdbcType="VARCHAR" property="color1" />
+    <result column="color2" jdbcType="VARCHAR" property="color2" />
+    <result column="ruleBrief" jdbcType="VARCHAR" property="rulebrief" />
+    <result column="actived" jdbcType="BIT" property="actived" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+    <result column="createdDatetime" jdbcType="TIMESTAMP" property="createddatetime" />
+    <result column="updatedDatetime" jdbcType="TIMESTAMP" property="updateddatetime" />
+    <result column="fitToDealerCode" jdbcType="VARCHAR" property="fittodealercode" />
+    <result column="useKmValue" jdbcType="INTEGER" property="usekmvalue" />
+    <result column="typeCode" jdbcType="VARCHAR" property="typecode" />
+    <result column="ruleString" jdbcType="VARCHAR" property="rulestring" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.saike.grape.sql.po.TCouponWithBLOBs">
+    <result column="ruleDetail" jdbcType="LONGVARCHAR" property="ruledetail" />
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, code, name, fitToMinKm, fitToMaxKm, fitToMinDaysUsed, fitToMaxDaysUsed, fitToEmissionVolume, 
+    fitToVehicleScope, fitToCity, beginDatetime, endDatetime, validInDays, moneyAmount, 
+    color1, color2, ruleBrief, actived, deleted, createdDatetime, updatedDatetime, fitToDealerCode, 
+    useKmValue, typeCode, ruleString
+  </sql>
+  <sql id="Blob_Column_List">
+    ruleDetail, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_coupon
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_coupon
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.saike.grape.sql.po.TCouponWithBLOBs">
+    insert into t_coupon (id, code, name, 
+      fitToMinKm, fitToMaxKm, fitToMinDaysUsed, 
+      fitToMaxDaysUsed, fitToEmissionVolume, 
+      fitToVehicleScope, fitToCity, beginDatetime, 
+      endDatetime, validInDays, moneyAmount, 
+      color1, color2, ruleBrief, 
+      actived, deleted, createdDatetime, 
+      updatedDatetime, fitToDealerCode, useKmValue, 
+      typeCode, ruleString, ruleDetail, 
+      description)
+    values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{fittominkm,jdbcType=INTEGER}, #{fittomaxkm,jdbcType=INTEGER}, #{fittomindaysused,jdbcType=INTEGER}, 
+      #{fittomaxdaysused,jdbcType=INTEGER}, #{fittoemissionvolume,jdbcType=VARCHAR}, 
+      #{fittovehiclescope,jdbcType=VARCHAR}, #{fittocity,jdbcType=VARCHAR}, #{begindatetime,jdbcType=TIMESTAMP}, 
+      #{enddatetime,jdbcType=TIMESTAMP}, #{validindays,jdbcType=BIGINT}, #{moneyamount,jdbcType=REAL}, 
+      #{color1,jdbcType=VARCHAR}, #{color2,jdbcType=VARCHAR}, #{rulebrief,jdbcType=VARCHAR}, 
+      #{actived,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{createddatetime,jdbcType=TIMESTAMP}, 
+      #{updateddatetime,jdbcType=TIMESTAMP}, #{fittodealercode,jdbcType=VARCHAR}, #{usekmvalue,jdbcType=INTEGER}, 
+      #{typecode,jdbcType=VARCHAR}, #{rulestring,jdbcType=VARCHAR}, #{ruledetail,jdbcType=LONGVARCHAR}, 
+      #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.saike.grape.sql.po.TCouponWithBLOBs">
+    insert into t_coupon
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="fittominkm != null">
+        fitToMinKm,
+      </if>
+      <if test="fittomaxkm != null">
+        fitToMaxKm,
+      </if>
+      <if test="fittomindaysused != null">
+        fitToMinDaysUsed,
+      </if>
+      <if test="fittomaxdaysused != null">
+        fitToMaxDaysUsed,
+      </if>
+      <if test="fittoemissionvolume != null">
+        fitToEmissionVolume,
+      </if>
+      <if test="fittovehiclescope != null">
+        fitToVehicleScope,
+      </if>
+      <if test="fittocity != null">
+        fitToCity,
+      </if>
+      <if test="begindatetime != null">
+        beginDatetime,
+      </if>
+      <if test="enddatetime != null">
+        endDatetime,
+      </if>
+      <if test="validindays != null">
+        validInDays,
+      </if>
+      <if test="moneyamount != null">
+        moneyAmount,
+      </if>
+      <if test="color1 != null">
+        color1,
+      </if>
+      <if test="color2 != null">
+        color2,
+      </if>
+      <if test="rulebrief != null">
+        ruleBrief,
+      </if>
+      <if test="actived != null">
+        actived,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="createddatetime != null">
+        createdDatetime,
+      </if>
+      <if test="updateddatetime != null">
+        updatedDatetime,
+      </if>
+      <if test="fittodealercode != null">
+        fitToDealerCode,
+      </if>
+      <if test="usekmvalue != null">
+        useKmValue,
+      </if>
+      <if test="typecode != null">
+        typeCode,
+      </if>
+      <if test="rulestring != null">
+        ruleString,
+      </if>
+      <if test="ruledetail != null">
+        ruleDetail,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="fittominkm != null">
+        #{fittominkm,jdbcType=INTEGER},
+      </if>
+      <if test="fittomaxkm != null">
+        #{fittomaxkm,jdbcType=INTEGER},
+      </if>
+      <if test="fittomindaysused != null">
+        #{fittomindaysused,jdbcType=INTEGER},
+      </if>
+      <if test="fittomaxdaysused != null">
+        #{fittomaxdaysused,jdbcType=INTEGER},
+      </if>
+      <if test="fittoemissionvolume != null">
+        #{fittoemissionvolume,jdbcType=VARCHAR},
+      </if>
+      <if test="fittovehiclescope != null">
+        #{fittovehiclescope,jdbcType=VARCHAR},
+      </if>
+      <if test="fittocity != null">
+        #{fittocity,jdbcType=VARCHAR},
+      </if>
+      <if test="begindatetime != null">
+        #{begindatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enddatetime != null">
+        #{enddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validindays != null">
+        #{validindays,jdbcType=BIGINT},
+      </if>
+      <if test="moneyamount != null">
+        #{moneyamount,jdbcType=REAL},
+      </if>
+      <if test="color1 != null">
+        #{color1,jdbcType=VARCHAR},
+      </if>
+      <if test="color2 != null">
+        #{color2,jdbcType=VARCHAR},
+      </if>
+      <if test="rulebrief != null">
+        #{rulebrief,jdbcType=VARCHAR},
+      </if>
+      <if test="actived != null">
+        #{actived,jdbcType=BIT},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+      <if test="createddatetime != null">
+        #{createddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateddatetime != null">
+        #{updateddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fittodealercode != null">
+        #{fittodealercode,jdbcType=VARCHAR},
+      </if>
+      <if test="usekmvalue != null">
+        #{usekmvalue,jdbcType=INTEGER},
+      </if>
+      <if test="typecode != null">
+        #{typecode,jdbcType=VARCHAR},
+      </if>
+      <if test="rulestring != null">
+        #{rulestring,jdbcType=VARCHAR},
+      </if>
+      <if test="ruledetail != null">
+        #{ruledetail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.saike.grape.sql.po.TCouponWithBLOBs">
+    update t_coupon
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="fittominkm != null">
+        fitToMinKm = #{fittominkm,jdbcType=INTEGER},
+      </if>
+      <if test="fittomaxkm != null">
+        fitToMaxKm = #{fittomaxkm,jdbcType=INTEGER},
+      </if>
+      <if test="fittomindaysused != null">
+        fitToMinDaysUsed = #{fittomindaysused,jdbcType=INTEGER},
+      </if>
+      <if test="fittomaxdaysused != null">
+        fitToMaxDaysUsed = #{fittomaxdaysused,jdbcType=INTEGER},
+      </if>
+      <if test="fittoemissionvolume != null">
+        fitToEmissionVolume = #{fittoemissionvolume,jdbcType=VARCHAR},
+      </if>
+      <if test="fittovehiclescope != null">
+        fitToVehicleScope = #{fittovehiclescope,jdbcType=VARCHAR},
+      </if>
+      <if test="fittocity != null">
+        fitToCity = #{fittocity,jdbcType=VARCHAR},
+      </if>
+      <if test="begindatetime != null">
+        beginDatetime = #{begindatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enddatetime != null">
+        endDatetime = #{enddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validindays != null">
+        validInDays = #{validindays,jdbcType=BIGINT},
+      </if>
+      <if test="moneyamount != null">
+        moneyAmount = #{moneyamount,jdbcType=REAL},
+      </if>
+      <if test="color1 != null">
+        color1 = #{color1,jdbcType=VARCHAR},
+      </if>
+      <if test="color2 != null">
+        color2 = #{color2,jdbcType=VARCHAR},
+      </if>
+      <if test="rulebrief != null">
+        ruleBrief = #{rulebrief,jdbcType=VARCHAR},
+      </if>
+      <if test="actived != null">
+        actived = #{actived,jdbcType=BIT},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+      <if test="createddatetime != null">
+        createdDatetime = #{createddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateddatetime != null">
+        updatedDatetime = #{updateddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fittodealercode != null">
+        fitToDealerCode = #{fittodealercode,jdbcType=VARCHAR},
+      </if>
+      <if test="usekmvalue != null">
+        useKmValue = #{usekmvalue,jdbcType=INTEGER},
+      </if>
+      <if test="typecode != null">
+        typeCode = #{typecode,jdbcType=VARCHAR},
+      </if>
+      <if test="rulestring != null">
+        ruleString = #{rulestring,jdbcType=VARCHAR},
+      </if>
+      <if test="ruledetail != null">
+        ruleDetail = #{ruledetail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.saike.grape.sql.po.TCouponWithBLOBs">
+    update t_coupon
+    set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      fitToMinKm = #{fittominkm,jdbcType=INTEGER},
+      fitToMaxKm = #{fittomaxkm,jdbcType=INTEGER},
+      fitToMinDaysUsed = #{fittomindaysused,jdbcType=INTEGER},
+      fitToMaxDaysUsed = #{fittomaxdaysused,jdbcType=INTEGER},
+      fitToEmissionVolume = #{fittoemissionvolume,jdbcType=VARCHAR},
+      fitToVehicleScope = #{fittovehiclescope,jdbcType=VARCHAR},
+      fitToCity = #{fittocity,jdbcType=VARCHAR},
+      beginDatetime = #{begindatetime,jdbcType=TIMESTAMP},
+      endDatetime = #{enddatetime,jdbcType=TIMESTAMP},
+      validInDays = #{validindays,jdbcType=BIGINT},
+      moneyAmount = #{moneyamount,jdbcType=REAL},
+      color1 = #{color1,jdbcType=VARCHAR},
+      color2 = #{color2,jdbcType=VARCHAR},
+      ruleBrief = #{rulebrief,jdbcType=VARCHAR},
+      actived = #{actived,jdbcType=BIT},
+      deleted = #{deleted,jdbcType=BIT},
+      createdDatetime = #{createddatetime,jdbcType=TIMESTAMP},
+      updatedDatetime = #{updateddatetime,jdbcType=TIMESTAMP},
+      fitToDealerCode = #{fittodealercode,jdbcType=VARCHAR},
+      useKmValue = #{usekmvalue,jdbcType=INTEGER},
+      typeCode = #{typecode,jdbcType=VARCHAR},
+      ruleString = #{rulestring,jdbcType=VARCHAR},
+      ruleDetail = #{ruledetail,jdbcType=LONGVARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.saike.grape.sql.po.TCoupon">
+    update t_coupon
+    set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      fitToMinKm = #{fittominkm,jdbcType=INTEGER},
+      fitToMaxKm = #{fittomaxkm,jdbcType=INTEGER},
+      fitToMinDaysUsed = #{fittomindaysused,jdbcType=INTEGER},
+      fitToMaxDaysUsed = #{fittomaxdaysused,jdbcType=INTEGER},
+      fitToEmissionVolume = #{fittoemissionvolume,jdbcType=VARCHAR},
+      fitToVehicleScope = #{fittovehiclescope,jdbcType=VARCHAR},
+      fitToCity = #{fittocity,jdbcType=VARCHAR},
+      beginDatetime = #{begindatetime,jdbcType=TIMESTAMP},
+      endDatetime = #{enddatetime,jdbcType=TIMESTAMP},
+      validInDays = #{validindays,jdbcType=BIGINT},
+      moneyAmount = #{moneyamount,jdbcType=REAL},
+      color1 = #{color1,jdbcType=VARCHAR},
+      color2 = #{color2,jdbcType=VARCHAR},
+      ruleBrief = #{rulebrief,jdbcType=VARCHAR},
+      actived = #{actived,jdbcType=BIT},
+      deleted = #{deleted,jdbcType=BIT},
+      createdDatetime = #{createddatetime,jdbcType=TIMESTAMP},
+      updatedDatetime = #{updateddatetime,jdbcType=TIMESTAMP},
+      fitToDealerCode = #{fittodealercode,jdbcType=VARCHAR},
+      useKmValue = #{usekmvalue,jdbcType=INTEGER},
+      typeCode = #{typecode,jdbcType=VARCHAR},
+      ruleString = #{rulestring,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.saike.grape.sql.po.TCoupon">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="fitToMinKm" jdbcType="INTEGER" property="fittominkm" />
+    <result column="fitToMaxKm" jdbcType="INTEGER" property="fittomaxkm" />
+    <result column="fitToMinDaysUsed" jdbcType="INTEGER" property="fittomindaysused" />
+    <result column="fitToMaxDaysUsed" jdbcType="INTEGER" property="fittomaxdaysused" />
+    <result column="fitToEmissionVolume" jdbcType="VARCHAR" property="fittoemissionvolume" />
+    <result column="fitToVehicleScope" jdbcType="VARCHAR" property="fittovehiclescope" />
+    <result column="fitToCity" jdbcType="VARCHAR" property="fittocity" />
+    <result column="beginDatetime" jdbcType="TIMESTAMP" property="begindatetime" />
+    <result column="endDatetime" jdbcType="TIMESTAMP" property="enddatetime" />
+    <result column="validInDays" jdbcType="INTEGER" property="validindays" />
+    <result column="moneyAmount" jdbcType="REAL" property="moneyamount" />
+    <result column="color1" jdbcType="VARCHAR" property="color1" />
+    <result column="color2" jdbcType="VARCHAR" property="color2" />
+    <result column="ruleBrief" jdbcType="VARCHAR" property="rulebrief" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="actived" jdbcType="BIT" property="actived" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+    <result column="createdDatetime" jdbcType="TIMESTAMP" property="createddatetime" />
+    <result column="updatedDatetime" jdbcType="TIMESTAMP" property="updateddatetime" />
+    <result column="fitToDealerCode" jdbcType="VARCHAR" property="fittodealercode" />
+    <result column="useKmValue" jdbcType="INTEGER" property="usekmvalue" />
+    <result column="typeCode" jdbcType="VARCHAR" property="typecode" />
+    <result column="ruleString" jdbcType="VARCHAR" property="rulestring" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.saike.grape.sql.po.TCoupon">
+    <result column="ruleDetail" jdbcType="LONGVARCHAR" property="ruledetail" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, code, name, fitToMinKm, fitToMaxKm, fitToMinDaysUsed, fitToMaxDaysUsed, fitToEmissionVolume, 
+    fitToVehicleScope, fitToCity, beginDatetime, endDatetime, validInDays, moneyAmount, 
+    color1, color2, ruleBrief, description, actived, deleted, createdDatetime, updatedDatetime, 
+    fitToDealerCode, useKmValue, typeCode, ruleString
+  </sql>
+  <sql id="Blob_Column_List">
+    ruleDetail
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_coupon
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_coupon
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.saike.grape.sql.po.TCoupon">
+    insert into t_coupon (id, code, name, 
+      fitToMinKm, fitToMaxKm, fitToMinDaysUsed, 
+      fitToMaxDaysUsed, fitToEmissionVolume, 
+      fitToVehicleScope, fitToCity, beginDatetime, 
+      endDatetime, validInDays, moneyAmount, 
+      color1, color2, ruleBrief, 
+      description, actived, deleted, 
+      createdDatetime, updatedDatetime, fitToDealerCode, 
+      useKmValue, typeCode, ruleString, 
+      ruleDetail)
+    values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{fittominkm,jdbcType=INTEGER}, #{fittomaxkm,jdbcType=INTEGER}, #{fittomindaysused,jdbcType=INTEGER}, 
+      #{fittomaxdaysused,jdbcType=INTEGER}, #{fittoemissionvolume,jdbcType=VARCHAR}, 
+      #{fittovehiclescope,jdbcType=VARCHAR}, #{fittocity,jdbcType=VARCHAR}, #{begindatetime,jdbcType=TIMESTAMP}, 
+      #{enddatetime,jdbcType=TIMESTAMP}, #{validindays,jdbcType=INTEGER}, #{moneyamount,jdbcType=REAL}, 
+      #{color1,jdbcType=VARCHAR}, #{color2,jdbcType=VARCHAR}, #{rulebrief,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{actived,jdbcType=BIT}, #{deleted,jdbcType=BIT}, 
+      #{createddatetime,jdbcType=TIMESTAMP}, #{updateddatetime,jdbcType=TIMESTAMP}, #{fittodealercode,jdbcType=VARCHAR}, 
+      #{usekmvalue,jdbcType=INTEGER}, #{typecode,jdbcType=VARCHAR}, #{rulestring,jdbcType=VARCHAR}, 
+      #{ruledetail,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.saike.grape.sql.po.TCoupon">
+    insert into t_coupon
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="fittominkm != null">
+        fitToMinKm,
+      </if>
+      <if test="fittomaxkm != null">
+        fitToMaxKm,
+      </if>
+      <if test="fittomindaysused != null">
+        fitToMinDaysUsed,
+      </if>
+      <if test="fittomaxdaysused != null">
+        fitToMaxDaysUsed,
+      </if>
+      <if test="fittoemissionvolume != null">
+        fitToEmissionVolume,
+      </if>
+      <if test="fittovehiclescope != null">
+        fitToVehicleScope,
+      </if>
+      <if test="fittocity != null">
+        fitToCity,
+      </if>
+      <if test="begindatetime != null">
+        beginDatetime,
+      </if>
+      <if test="enddatetime != null">
+        endDatetime,
+      </if>
+      <if test="validindays != null">
+        validInDays,
+      </if>
+      <if test="moneyamount != null">
+        moneyAmount,
+      </if>
+      <if test="color1 != null">
+        color1,
+      </if>
+      <if test="color2 != null">
+        color2,
+      </if>
+      <if test="rulebrief != null">
+        ruleBrief,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="actived != null">
+        actived,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="createddatetime != null">
+        createdDatetime,
+      </if>
+      <if test="updateddatetime != null">
+        updatedDatetime,
+      </if>
+      <if test="fittodealercode != null">
+        fitToDealerCode,
+      </if>
+      <if test="usekmvalue != null">
+        useKmValue,
+      </if>
+      <if test="typecode != null">
+        typeCode,
+      </if>
+      <if test="rulestring != null">
+        ruleString,
+      </if>
+      <if test="ruledetail != null">
+        ruleDetail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="fittominkm != null">
+        #{fittominkm,jdbcType=INTEGER},
+      </if>
+      <if test="fittomaxkm != null">
+        #{fittomaxkm,jdbcType=INTEGER},
+      </if>
+      <if test="fittomindaysused != null">
+        #{fittomindaysused,jdbcType=INTEGER},
+      </if>
+      <if test="fittomaxdaysused != null">
+        #{fittomaxdaysused,jdbcType=INTEGER},
+      </if>
+      <if test="fittoemissionvolume != null">
+        #{fittoemissionvolume,jdbcType=VARCHAR},
+      </if>
+      <if test="fittovehiclescope != null">
+        #{fittovehiclescope,jdbcType=VARCHAR},
+      </if>
+      <if test="fittocity != null">
+        #{fittocity,jdbcType=VARCHAR},
+      </if>
+      <if test="begindatetime != null">
+        #{begindatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enddatetime != null">
+        #{enddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validindays != null">
+        #{validindays,jdbcType=INTEGER},
+      </if>
+      <if test="moneyamount != null">
+        #{moneyamount,jdbcType=REAL},
+      </if>
+      <if test="color1 != null">
+        #{color1,jdbcType=VARCHAR},
+      </if>
+      <if test="color2 != null">
+        #{color2,jdbcType=VARCHAR},
+      </if>
+      <if test="rulebrief != null">
+        #{rulebrief,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="actived != null">
+        #{actived,jdbcType=BIT},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+      <if test="createddatetime != null">
+        #{createddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateddatetime != null">
+        #{updateddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fittodealercode != null">
+        #{fittodealercode,jdbcType=VARCHAR},
+      </if>
+      <if test="usekmvalue != null">
+        #{usekmvalue,jdbcType=INTEGER},
+      </if>
+      <if test="typecode != null">
+        #{typecode,jdbcType=VARCHAR},
+      </if>
+      <if test="rulestring != null">
+        #{rulestring,jdbcType=VARCHAR},
+      </if>
+      <if test="ruledetail != null">
+        #{ruledetail,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.saike.grape.sql.po.TCoupon">
+    update t_coupon
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="fittominkm != null">
+        fitToMinKm = #{fittominkm,jdbcType=INTEGER},
+      </if>
+      <if test="fittomaxkm != null">
+        fitToMaxKm = #{fittomaxkm,jdbcType=INTEGER},
+      </if>
+      <if test="fittomindaysused != null">
+        fitToMinDaysUsed = #{fittomindaysused,jdbcType=INTEGER},
+      </if>
+      <if test="fittomaxdaysused != null">
+        fitToMaxDaysUsed = #{fittomaxdaysused,jdbcType=INTEGER},
+      </if>
+      <if test="fittoemissionvolume != null">
+        fitToEmissionVolume = #{fittoemissionvolume,jdbcType=VARCHAR},
+      </if>
+      <if test="fittovehiclescope != null">
+        fitToVehicleScope = #{fittovehiclescope,jdbcType=VARCHAR},
+      </if>
+      <if test="fittocity != null">
+        fitToCity = #{fittocity,jdbcType=VARCHAR},
+      </if>
+      <if test="begindatetime != null">
+        beginDatetime = #{begindatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enddatetime != null">
+        endDatetime = #{enddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validindays != null">
+        validInDays = #{validindays,jdbcType=INTEGER},
+      </if>
+      <if test="moneyamount != null">
+        moneyAmount = #{moneyamount,jdbcType=REAL},
+      </if>
+      <if test="color1 != null">
+        color1 = #{color1,jdbcType=VARCHAR},
+      </if>
+      <if test="color2 != null">
+        color2 = #{color2,jdbcType=VARCHAR},
+      </if>
+      <if test="rulebrief != null">
+        ruleBrief = #{rulebrief,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="actived != null">
+        actived = #{actived,jdbcType=BIT},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+      <if test="createddatetime != null">
+        createdDatetime = #{createddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateddatetime != null">
+        updatedDatetime = #{updateddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fittodealercode != null">
+        fitToDealerCode = #{fittodealercode,jdbcType=VARCHAR},
+      </if>
+      <if test="usekmvalue != null">
+        useKmValue = #{usekmvalue,jdbcType=INTEGER},
+      </if>
+      <if test="typecode != null">
+        typeCode = #{typecode,jdbcType=VARCHAR},
+      </if>
+      <if test="rulestring != null">
+        ruleString = #{rulestring,jdbcType=VARCHAR},
+      </if>
+      <if test="ruledetail != null">
+        ruleDetail = #{ruledetail,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.saike.grape.sql.po.TCoupon">
+    update t_coupon
+    set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      fitToMinKm = #{fittominkm,jdbcType=INTEGER},
+      fitToMaxKm = #{fittomaxkm,jdbcType=INTEGER},
+      fitToMinDaysUsed = #{fittomindaysused,jdbcType=INTEGER},
+      fitToMaxDaysUsed = #{fittomaxdaysused,jdbcType=INTEGER},
+      fitToEmissionVolume = #{fittoemissionvolume,jdbcType=VARCHAR},
+      fitToVehicleScope = #{fittovehiclescope,jdbcType=VARCHAR},
+      fitToCity = #{fittocity,jdbcType=VARCHAR},
+      beginDatetime = #{begindatetime,jdbcType=TIMESTAMP},
+      endDatetime = #{enddatetime,jdbcType=TIMESTAMP},
+      validInDays = #{validindays,jdbcType=INTEGER},
+      moneyAmount = #{moneyamount,jdbcType=REAL},
+      color1 = #{color1,jdbcType=VARCHAR},
+      color2 = #{color2,jdbcType=VARCHAR},
+      ruleBrief = #{rulebrief,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      actived = #{actived,jdbcType=BIT},
+      deleted = #{deleted,jdbcType=BIT},
+      createdDatetime = #{createddatetime,jdbcType=TIMESTAMP},
+      updatedDatetime = #{updateddatetime,jdbcType=TIMESTAMP},
+      fitToDealerCode = #{fittodealercode,jdbcType=VARCHAR},
+      useKmValue = #{usekmvalue,jdbcType=INTEGER},
+      typeCode = #{typecode,jdbcType=VARCHAR},
+      ruleString = #{rulestring,jdbcType=VARCHAR},
+      ruleDetail = #{ruledetail,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.saike.grape.sql.po.TCoupon">
+    update t_coupon
+    set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      fitToMinKm = #{fittominkm,jdbcType=INTEGER},
+      fitToMaxKm = #{fittomaxkm,jdbcType=INTEGER},
+      fitToMinDaysUsed = #{fittomindaysused,jdbcType=INTEGER},
+      fitToMaxDaysUsed = #{fittomaxdaysused,jdbcType=INTEGER},
+      fitToEmissionVolume = #{fittoemissionvolume,jdbcType=VARCHAR},
+      fitToVehicleScope = #{fittovehiclescope,jdbcType=VARCHAR},
+      fitToCity = #{fittocity,jdbcType=VARCHAR},
+      beginDatetime = #{begindatetime,jdbcType=TIMESTAMP},
+      endDatetime = #{enddatetime,jdbcType=TIMESTAMP},
+      validInDays = #{validindays,jdbcType=INTEGER},
+      moneyAmount = #{moneyamount,jdbcType=REAL},
+      color1 = #{color1,jdbcType=VARCHAR},
+      color2 = #{color2,jdbcType=VARCHAR},
+      ruleBrief = #{rulebrief,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      actived = #{actived,jdbcType=BIT},
+      deleted = #{deleted,jdbcType=BIT},
+      createdDatetime = #{createddatetime,jdbcType=TIMESTAMP},
+      updatedDatetime = #{updateddatetime,jdbcType=TIMESTAMP},
+      fitToDealerCode = #{fittodealercode,jdbcType=VARCHAR},
+      useKmValue = #{usekmvalue,jdbcType=INTEGER},
+      typeCode = #{typecode,jdbcType=VARCHAR},
+      ruleString = #{rulestring,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

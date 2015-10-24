@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.saike.grape.dao.generic.GenericDAOBatisImplMapper">
+
+	 <select id="selectAll" parameterType="map" resultType="map">
+        select * from ${table_name} 
+        where actived=true and deleted=false
+    </select>
+
+    <insert id="batchInsert" parameterType="map">
+        insert into ${table_name}
+        <foreach item="field" index="index" collection="fields" open="("
+            separator="," close=")">
+            ${field}
+        </foreach>
+        values
+        <foreach item="list" index="index" collection="values" separator=",">
+	        <foreach item="value" index="index" collection="list" open="("
+	            separator="," close=")">
+	            #{value}
+	        </foreach>        
+        </foreach>        
+    </insert>
+
+    <select id="findById" parameterType="map" resultType="map">
+        select * from ${table_name} 
+        where id=#{id} and actived=true and deleted=false
+    </select>
+
+    <select id="findByCode" parameterType="map" resultType="map">
+        select * from ${table_name} 
+        where code=#{code} and actived=true and deleted=false
+    </select>
+
+    <update id="deleteById" parameterType="map">
+        update ${table_name} set actived=false, deleted=true
+        where id=#{id};
+    </update>
+
+    <update id="deleteByCode" parameterType="map">
+        update ${table_name} set actived=false, deleted=true
+        where code=#{code};
+    </update>
+
+    <update id="batchDeleteByIds" parameterType="map">
+        update ${table_name} set actived=false, deleted=true
+        where id in
+        <foreach item="id" index="index" collection="ids" open="("
+            separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+ 
+    <update id="updateWithMap" parameterType="map">
+	update ${table_name} set
+	<if test="fields!=null">
+		<foreach item="field" index="idx" collection="fields" separator="," >
+			<foreach collection="values" index="idv" item="value">
+			<if test="idx==idv">
+				${field}=#{value}
+			</if>
+			</foreach>
+		</foreach>
+		<if test="conditions!=null">
+		   where ${conditions}
+		</if>
+	</if>
+	</update>
+
+	<update id="updateByCode" parameterType="map">
+	update ${table_name} set
+	<if test="fields!=null">
+		<foreach item="field" index="idx" collection="fields" separator="," >
+			<foreach collection="values" index="idv" item="value">
+			<if test="idx==idv">
+				${field}=#{value}
+			</if>
+			</foreach>
+		</foreach>
+		   where code=#{code}
+	</if>
+	</update>
+
+	<delete id="deletePhysicalByCodeList" parameterType="map">
+		<if test="codeList!=null">
+			delete from  ${table_name} where code in
+			<foreach collection="codeList" index="idv" item="code"
+				separator="," open="(" close=")">
+				#{code}
+			</foreach>
+		</if>
+	</delete>
+	<delete id="deletePhysicalByIdList" parameterType="map">
+		delete from ${table_name} where id in
+		<if test="idList!=null">
+			<foreach collection="idList" index="idv" item="id" separator=","
+				open="(" close=")">
+				#{id}
+			</foreach>
+		</if>
+	</delete>
+	
+	<update id="deleteByCodeList" parameterType="map">
+        update ${table_name} set actived=false, deleted=true 
+         where code in
+        <foreach item="code" index="index" collection="codeList" open="("
+            separator="," close=")">
+            #{code}
+        </foreach>
+    </update>
+    
+    <update id="deleteByIdList" parameterType="map">
+        update ${table_name} set actived=false, deleted=true 
+         where id in
+        <foreach item="id" index="index" collection="idList" open="("
+            separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+</mapper> 

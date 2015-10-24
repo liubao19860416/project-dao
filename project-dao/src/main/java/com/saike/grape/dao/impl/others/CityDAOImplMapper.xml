@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.saike.grape.dao.impl.others.CityDAOImplMapper">
+    
+    <select id="getCityList"  parameterType="map" resultType="city">
+        SELECT code,name,level,parentCode,
+        fullPath,description,createdDatetime,updatedDatetime 
+        FROM ${table_name} WHERE actived = true AND deleted = false 
+        AND level = 3
+    </select>
+    
+    <select id="getCityByName" parameterType="map" resultType="city">
+        SELECT code,name,level,parentCode,
+        fullPath,description,createdDatetime,updatedDatetime 
+        FROM ${table_name} WHERE actived = true AND deleted = false 
+        AND level = 3 AND name = #{name}
+    </select>
+
+	<update id="updateCity" parameterType="city">
+		UPDATE t_city
+		<set>
+			<if test="name != null">
+				name = #{name},
+			</if>
+			<if test="level != null">
+				level = #{level},
+			</if>
+			<if test="parentCode != null">
+				parentCode = #{parentCode},
+			</if>
+			<if test="fullPath != null">
+				fullPath = #{fullPath},
+			</if>
+			<if test="description != null">
+				description = #{description},
+			</if>
+			<if test="actived != null">
+			     actived = #{actived},
+			</if>
+			<if test="deleted != null">
+                 deleted = #{deleted},
+            </if>
+			<if test="updatedDatetime != null">
+				updatedDatetime = #{updatedDatetime},
+			</if>
+		</set>
+		WHERE code = #{code}
+	</update>
+    
+</mapper> 

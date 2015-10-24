@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.saike.grape.dao.impl.others.UserOrderDAOImplMapper">
+
+	<select id="getUserOrderListByUserId" parameterType="string" resultMap="historyMap">
+		select *
+		from t_user_order
+		where actived = true and deleted= false and
+		userCode=#{userId} order by createdDatetime desc
+	</select>
+<!-- by statusIndex asc, -->
+	<resultMap type="userOrder" id="historyMap">
+		<result column="status" property="status"
+			typeHandler="com.saike.grape.dao.utils.typehandler.UserOrderStatusEnumTypeHandler" />
+	</resultMap>
+
+	<select id="getUserOrderByStatus" parameterType="map" resultMap="historyMap">
+		select *
+		from t_user_order o
+		where actived = true and deleted= false and
+		o.dealerCode= #{dealerCode}
+		 <if test="status != '0'.toString()"> 
+			and o.status =#{status}
+		 </if>
+		ORDER BY
+		<choose>
+			<when test="orderBy == 'createTime'">
+				o.createdDatetime ${orderType},o.beginDatetime
+				${orderType}
+			</when>
+			<when test="orderBy == 'beginTime'">
+				o.createdDatetime ${orderType},o.beginDatetime
+				${orderType}
+			</when>
+			<otherwise>
+				o.createdDatetime DESC,o.beginDatetime DESC
+			</otherwise>
+		</choose>
+	</select>
+
+	<update id="updateUserOrderStatus" parameterType="map">
+		UPDATE t_user_order
+		SET
+		status= #{status},statusIndex=#{statusIndex}
+		<if test="dealerRemark!=null and dealerRemark!=''">
+			,dealerRemark=#{dealerRemark}
+		</if>
+		, updatedDatetime = SYSDATE()
+		WHERE actived = true and deleted= false
+		and
+		code=#{code}
+	</update>
+	
+	<!-- 根据orderCode，更新对应过的用户订单的couponCode字段 -->
+	<update id="updateCouponCodeByUserOrderCode" parameterType="map">
+		UPDATE t_user_order
+		SET couponCode= #{couponCode}
+		WHERE code=#{code}
+	</update>
+
+	<resultMap type="orderBasicMaintenance" id="obmMap">
+	</resultMap>
+	<resultMap type="userOrder" id="orderDetailMap">
+		<result column="status" property="status"
+			typeHandler="com.saike.grape.dao.utils.typehandler.UserOrderStatusEnumTypeHandler" />
+        <result column="code" property="code"  javaType="string" />
+		<collection property="basicMaintenanceList" ofType="orderBasicMaintenance"
+			javaType="ArrayList" column="{code=code}" select="selectBasicOrderMaint">
+            <result column="code" property="code"  javaType="string" />
+		</collection>
+	</resultMap>
+
+	<select id="selectBasicOrderMaint" parameterType="map"
+		resultMap="obmMap">
+		select * from t_user_order_basic_maintenance where userOrderCode=#{code}
+	</select>
+
+	<select id="selectBasicOrderParts" parameterType="map">
+		select * from t_user_order_basic_spare_part where maintenanceCode=#{code}
+	</select>
+
+	<select id="selectDealerOrderMaint" parameterType="map"
+		>
+		select * from t_user_order_dealer_maintenance where userOrderCode=#{code}
+	</select>
+
+	<select id="selectDealerOrderParts" parameterType="map"
+		>
+		select * from t_user_order_dealer_spare_part where maintenanceCode=#{code}
+	</select>
+
+	<select id="getUserOrderDetailByCode" parameterType="userOrder" resultMap="orderDetailMap">
+		select * from t_user_order where code=#{code}
+	</select>
+
+	<select id="getOrderByCodes" parameterType="map" resultMap="historyMap">
+		select * from t_user_order where
+		actived = true and deleted= false and
+		code in
+		<foreach item="value" index="index" collection="codes" open="("
+			separator="," close=")">
+			#{value}
+		</foreach>
+	</select>
+
+	<update id="batchUpdateUserOrderStatus" parameterType="map">
+		update t_user_order set status= #{status},statusIndex=#{statusIndex}, updatedDatetime = SYSDATE()
+		WHERE actived = true and deleted= false and
+		code in
+		<foreach item="value" index="index" collection="codes" open="("
+			separator="," close=")">
+			#{value}
+		</foreach>
+	</update>
+
+	<select id="getUserOrderListDOP" parameterType="map" resultMap="historyMap">
+		select * from t_user_order where
+		actived = true and deleted= false and
+		dealerCode=#{dealerCode}
+		<if test="code !=null and code !=''">
+			and code like '%${code}%'
+		</if>
+		<if test="userName !=null and userName !=''">
+			and userName like '%${userName}%'
+		</if>
+		<if test="userMobilePhone !=null and userMobilePhone !=''">
+			and userMobilePhone like '%${userMobilePhone}%'
+		</if>
+		<if test="status !=null and status !=''">
+			and status=#{status}
+		</if>
+		<if test="beginPrice !=null and beginPrice !=''">
+			and totalMoney>=#{beginPrice}
+		</if>
+		<if test="endPrice !=null and endPrice !=''">
+			and totalMoney&lt;=#{endPrice}
+		</if>
+		<if test="vehiclePlateNumber !=null and vehiclePlateNumber !=''">
+			and vehiclePlateNumber like '%${vehiclePlateNumber}%'
+		</if>
+		<if test="startMinitTime !=null and startMinitTime !=''">
+			and beginDatetime >= #{startMinitTime}
+		</if>
+		<if test="endMiniTime !=null and endMiniTime !=''">
+			and endDatetime &lt;= #{endMiniTime}
+		</if>
+		<if test="startCommitTime !=null and startCommitTime !=''">
+			and createdDatetime >= #{startCommitTime}
+		</if>
+		<if test="endCommitTime !=null and endCommitTime !=''">
+			and createdDatetime &lt;= #{endCommitTime}
+		</if>
+		order by createdDatetime desc
+	</select>
+
+	<select id="getCouponIsExistByUserOrder" parameterType="map" resultType="long">
+		select count(*) from
+		t_user_order ord
+		where
+		ord.couponCode is not null and ord.couponCode!=''
+		and(ord.deviceId=#{deviceId} or ord.userCode=#{userCode}
+		or ord.vehiclePlateNumber=#{vehiclePlateNumber}
+		or ord.userMobilePhone=#{userMobilePhone})
+	</select>
+	
+	
+	<!-- csc的order操作 -->
+	
+	<sql id="orderCountBaseSql">
+        SELECT 
+            count(1)
+        FROM
+            t_user_order
+    </sql>
+	<sql id="selectOrderCountWhereSQL">
+        <if test="dealerId != null and dealerId != ''">
+            AND dealerCode = #{dealerId}
+        </if>
+        <if test="maintStartTime != null and maintStartTime != ''">
+            <![CDATA[ 
+                AND UNIX_TIMESTAMP(beginDatetime) >= UNIX_TIMESTAMP(#{maintStartTime})
+            ]]>
+        </if>
+        <if test="maintEndTime != null and maintEndTime != ''">
+            <![CDATA[ 
+                AND UNIX_TIMESTAMP(endDatetime) <= UNIX_TIMESTAMP(#{maintEndTime})
+            ]]>
+        </if>
+        <if test="createStartTime != null and createStartTime != ''">
+            <![CDATA[ 
+                AND UNIX_TIMESTAMP(createdDatetime) >= UNIX_TIMESTAMP(#{createStartTime})
+            ]]>
+        </if>
+        <if test="createEndTime != null and createEndTime != ''">
+            <![CDATA[ 
+                AND UNIX_TIMESTAMP(createdDatetime) <= UNIX_TIMESTAMP(#{createEndTime})
+            ]]>
+        </if>
+    </sql>
+    
+    <!-- [运营平台]查询订单总数 -->
+    <select id="getOrderTotalCount" parameterType="map" resultType="long" flushCache="true">
+        <include refid="orderCountBaseSql"/>
+        <where>
+            <include refid="selectOrderCountWhereSQL"/>
+        </where>
+    </select>
+    
+    <!-- [运营平台]查询有经销商备注的订单总数 -->
+    <select id="getDealerRemarkOrderCount" parameterType="map" resultType="long" flushCache="true">
+        <include refid="orderCountBaseSql"/>
+        <where>
+            dealerRemark IS NOT NULL AND TRIM(dealerRemark) != ''
+            <include refid="selectOrderCountWhereSQL"/>
+        </where>
+    </select>
+    
+    <!-- [运营平台]查询已接单的(status=2)订单总数 -->
+    <select id="getStatusEq2OrderCount" parameterType="map" resultType="long" flushCache="true">
+        <include refid="orderCountBaseSql"/>
+        <where>
+              status in('已确认','已完工','已更新公里数')
+            <include refid="selectOrderCountWhereSQL"/>
+        </where>
+    </select>
+    
+    <!-- [运营平台]查询已拒单的(status=3)订单总数 -->
+    <select id="getStatusEq3OrderCount" parameterType="map" resultType="long" flushCache="true">
+        <include refid="orderCountBaseSql"/>
+        <where>
+            status = '已拒绝'
+            <include refid="selectOrderCountWhereSQL"/>
+        </where>
+    </select>
+    
+    <!-- [运营平台]查询已完工的(status=9)订单总数 -->
+    <select id="getStatusEq9OrderCount" parameterType="map" resultType="long" flushCache="true">
+        <include refid="orderCountBaseSql"/>
+        <where>
+         	status = '已完工' 
+            <include refid="selectOrderCountWhereSQL"/>
+        </where>
+    </select>
+    
+    <!-- [运营平台]查询已完工并且用户已更新公里数的(status=11)订单总数 -->
+    <select id="getStatusEq11OrderCount" parameterType="map" resultType="long" flushCache="true">
+        <include refid="orderCountBaseSql"/>
+        <where>
+            status = '已更新公里数'
+            <include refid="selectOrderCountWhereSQL"/>
+        </where>
+    </select>
+    
+    <!-- [运营平台]查询用户反选项目的订单总数 -->
+    <!-- <select id="getReverseProOrderCount" parameterType="map" resultType="int" flushCache="true">
+        <include refid="orderCountBaseSql"/>
+        <where>
+            d.is_un_select = 1
+            <include refid="selectOrderCountWhereSQL"/>
+        </where>
+    </select> -->
+    
+    
+    
+        <!-- 1、经销商PC端, 订单管理模块 根据检索条件查询订单列表 -->
+    <select id="getUserOrderListForCsc" parameterType="map" resultMap="historyMap">
+        SELECT 
+      *
+        FROM
+            t_user_order
+        <where>
+            <if test="dealerId != null and dealerId != ''">
+                dealerCode = #{dealerId}
+            </if>
+            <choose>
+                <when test="orderStatus != null and orderStatus != ''.toString() and orderStatus == '已完工'.toString()">
+                    AND status = #{orderStatus}
+                </when>
+                <when test="orderStatus != null and orderStatus != ''.toString()">
+                    AND status = #{orderStatus}
+                </when>
+            </choose>
+            <if test="orderNo != null and orderNo != ''">
+                AND code LIKE CONCAT('%','${orderNo}','%' )
+            </if>
+            <if test="orderUName != null and orderUName != ''">
+                AND userName LIKE CONCAT('%','${orderUName}','%' )
+            </if>
+            <if test="orderUTel != null and orderUTel != ''">
+                AND userMobilePhone LIKE CONCAT('%','${orderUTel}','%' )
+            </if>
+            <if test="orderMinAmt != null and orderMinAmt != ''">
+                <![CDATA[ 
+                    AND actualAmount >= #{orderMinAmt}
+                ]]>
+            </if>
+            <if test="orderMaxAmt != null and orderMaxAmt != ''">
+                <![CDATA[ 
+                    AND actualAmount <= #{orderMaxAmt}
+                ]]>
+            </if>
+            <if test="maintStartTime != null and maintStartTime != ''">
+                <![CDATA[ 
+                    AND UNIX_TIMESTAMP(beginDatetime) >= UNIX_TIMESTAMP(#{maintStartTime})
+                ]]>
+            </if>
+            <if test="maintEndTime != null and maintEndTime != ''">
+                <![CDATA[ 
+                    AND UNIX_TIMESTAMP(beginDatetime) <= UNIX_TIMESTAMP(#{maintEndTime})
+                ]]>
+            </if>
+            <if test="createStartTime != null and createStartTime != ''">
+                <![CDATA[ 
+                    AND UNIX_TIMESTAMP(createdDatetime) >= UNIX_TIMESTAMP(#{createStartTime})
+                ]]>
+            </if>
+            <if test="createEndTime != null and createEndTime != ''">
+                <![CDATA[ 
+                    AND UNIX_TIMESTAMP(createdDatetime) <= UNIX_TIMESTAMP(#{createEndTime})
+                ]]>
+            </if>
+            <if test="vlp != null and vlp != ''">
+                AND vehiclePlateNumber LIKE CONCAT('%','${vlp}','%' ) 
+            </if>
+        </where>
+        ORDER BY createdDatetime DESC
+    </select>
+	
+	
+</mapper> 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.saike.grape.dao.impl.others.UserOrderHistoryDAOImplMapper">
+	<select id="getOrderTrace" parameterType="orderHistory"
+		resultMap="historyMap">
+		select *
+		from t_user_order_history
+		where actived = true and deleted= false and userOrderCode=#{userOrderCode}
+	</select>
+
+	<resultMap type="orderHistory" id="historyMap">
+		<result column="status" property="status"
+			typeHandler="com.saike.grape.dao.utils.typehandler.UserOrderStatusEnumTypeHandler" />
+	</resultMap>
+</mapper> 

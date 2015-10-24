@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="datas.transfer.BasicMaintenanceTransferMapper">
+
+    <insert id="insertBasicMaintenances" parameterType="map">
+        insert into t_basic_maintenance
+              (code,                 name,                maintenanceOwnerCode,  fitToMinKm,    fitToMaxKm, fitToMinDaysUsed,   fitToMaxDaysUsed,  fitToEmissionVolume,  fitToVehicleScope,                         fitToCity, periodValue, periodUnit, laborHour, docURL,               description,      actived, deleted, createdDatetime,     updatedDatetime)
+        values('RW350换机油',        '换机油',             'sys',                 0,             10000000,   0,                  100000,            '*',                  ',RW-350*,RW-350---15L,RW-350---15T,',       '*',       5000,        'km',       2,        'introduce1.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW350更换机油滤芯',  '更换机油滤芯',        'sys',                 0,             10000000,    0,                  100000,            '*',                  ',RW-350*,RW-350---15L,RW-350---15T,',      '*',       5000,        'km',       1,         'introduce2.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW350更换空气滤芯',  '更换空气滤芯',        'sys',                 0,             10000000,    0,                  100000,            '*',                  ',RW-350*,',                                '*',       10000,       'km',       0.5,       'introduce3.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW350更换空调滤芯',  '更换空调滤芯',        'sys',                 0,             10000000,    0,                  100000,            '*',                  ',RW-350*,',                                '*',       10000,       'km',       0.5,       'introduce4.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW350更换燃油滤芯',  '更换燃油滤芯',        'sys',                 0,             10000000,    0,                  100000,            '*',                  ',RW-350*,',                                '*',       20000,       'km',       1,         'introduce5.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW350更换转向助力液',  '更换转向助力液',     'sys',                 0,             10000000,    0,                  100000,            '*',                  ',RW-350*,',                               '*',      50000,       'km',       2,          'introduce6.html',      null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW350更换火花塞',     '更换火花塞',          'sys',                 0,             10000000,    0,                  100000,            '*',                  ',RW-350*,',                               '*',      30000,       'km',       2,         'introduce7.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW350更换变速箱油',   '更换变速箱油',        'sys',                 0,             10000000,    0,                  100000,            '*',                 ',RW-350*,',                                '*',       80000,       'km',       2,         'introduce8.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW350正时皮带涨紧器', '更换正时皮带及涨紧器',  'sys',                 0,             10000000,    0,                  100000,            '*',                ',RW-350*,',                                '*',       80000,       'km',      30,         'introduce9.html',      null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+        
+              ('RW550换机油',        '换机油',              'sys',                 0,             10000000,   0,                  100000,            '*',                   ',RW-550*,RW-550---18L,RW-550---18T,',       '*',       5000,        'km',       2,      'introduce1.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW550更换机油滤芯',  '更换机油滤芯',        'sys',                 0,             10000000,    0,                  100000,            '*',                   ',RW-550*,RW-550---18L,RW-550---18T,',       '*',       5000,        'km',       1.5,     'introduce2.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW550更换空气滤芯',  '更换空气滤芯',        'sys',                 0,             10000000,    0,                  100000,            '*',                   ',RW-550*,',                               '*',       10000,       'km',       0.5,       'introduce3.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW550更换空调滤芯',  '更换空调滤芯',        'sys',                 0,             10000000,    0,                  100000,            '*',                   ',RW-550*,',                               '*',       10000,       'km',       0.5,       'introduce4.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW550更换燃油滤芯',  '更换燃油滤芯',        'sys',                 0,             10000000,    0,                  100000,            '*',                   ',RW-550*,',                               '*',       20000,       'km',       1,         'introduce5.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW550更换转向助力液',  '更换转向助力液',     'sys',                 0,             10000000,    0,                  100000,            '*',                  ',RW-550*,',                                 '*',       50000,       'km',       3,        'introduce6.html',      null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW550更换火花塞',     '更换火花塞',          'sys',                 0,             10000000,    0,                  100000,            '*',                  ',RW-550*,',                                '*',       30000,       'km',       2,        'introduce7.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW550更换变速箱油',   '更换变速箱油',        'sys',                 0,             10000000,    0,                  100000,            '*',                  ',RW-550*,',                               '*',       80000,        'km',       3,         'introduce8.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW550正时皮带涨紧器1.8L', '更换正时皮带及涨紧器',  'sys',                 0,        10000000,    0,                  100000,          ',1.8L,',               ',RW-550*,',                               '*',       80000,        'km',      40,         'introduce9.html',      null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW550正时皮带涨紧器1.8T', '更换正时皮带及涨紧器',  'sys',                 0,        10000000,    0,                  100000,          ',1.8T,',               ',RW-550*,',                               '*',       80000,        'km',      40,         'introduce9.html',      null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+        
+              ('RWW5换机油1.8T',        '换机油',              'sys',                 0,             10000000,   0,                  100000,        ',1.8T,',                     ',RW-W5-*,RW-W5----18T,',       '*',       5000,        'km',       3,            'introduce1.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RWW5更换机油滤芯1.8T',  '更换机油滤芯',        'sys',                 0,             10000000,    0,                  100000,        ',1.8T,',                     ',RW-W5-*,RW-W5----18T,',       '*',       5000,        'km',       2,             'introduce2.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RWW5更换空气滤芯1.8T',  '更换空气滤芯',        'sys',                 0,             10000000,    0,                  100000,        ',1.8T,',                     ',RW-W5-*,',                          '*',       10000,       'km',       1,       'introduce3.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RWW5更换空调滤芯1.8T',  '更换空调滤芯',        'sys',                 0,             10000000,    0,                  100000,        ',1.8T,',                     ',RW-W5-*,',                          '*',       10000,       'km',       1.5,       'introduce4.html',    null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RWW5更换燃油滤芯1.8T',  '更换燃油滤芯',        'sys',                 0,             10000000,    0,                  100000,        ',1.8T,',                     ',RW-W5-*,',                           '*',       20000,       'km',       1.5,      'introduce5.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RWW5更换转向助力液1.8T',  '更换转向助力液',     'sys',                 0,             10000000,    0,                  100000,        ',1.8T,',                    ',RW-W5-*,',                             '*',       50000,        'km',       3,    'introduce6.html',      null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RWW5更换火花塞1.8T',     '更换火花塞',          'sys',                 0,             10000000,    0,                  100000,        ',1.8T,',                    ',RW-W5-*,',                         '*',       30000,       'km',       4,        'introduce7.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RWW5更换变速箱油1.8T',   '更换变速箱油',        'sys',                 0,             10000000,    0,                  100000,        ',1.8T,',                    ',RW-W5-*,',                         '*',       80000,       'km',       5,         'introduce8.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RWW5正时皮带涨紧器1.8T', '更换正时皮带及涨紧器',  'sys',                 0,             10000000,    0,                  100000,       ',1.8T,',                    ',RW-W5-*,',                          '*',        80000,       'km',      45,        'introduce9.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+        
+              ('RWW5换机油3.2L',        '换机油',              'sys',                 0,             10000000,   0,                  100000,        ',3.2L,',                     ',RW-W5-*,RW-W5----32L,',       '*',       5000,        'km',       3,            'introduce1.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RWW5更换机油滤芯3.2L',  '更换机油滤芯',        'sys',                 0,             10000000,    0,                  100000,        ',3.2L,',                     ',RW-W5-*,RW-W5----32L,',       '*',       5000,        'km',       2,           'introduce2.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RWW5更换空气滤芯3.2L',  '更换空气滤芯',        'sys',                 0,             10000000,    0,                  100000,        ',3.2L,',                     ',RW-W5-*,',                     '*',       10000,       'km',       1,          'introduce3.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RWW5更换空调滤芯3.2L',  '更换空调滤芯',        'sys',                 0,             10000000,    0,                  100000,        ',3.2L,',                     ',RW-W5-*,',                     '*',       10000,       'km',       1.5,        'introduce4.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RWW5更换燃油滤芯3.2L',  '更换燃油滤芯',        'sys',                 0,             10000000,    0,                  100000,        ',3.2L,',                     ',RW-W5-*,',                     '*',       20000,       'km',       1.5,         'introduce5.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RWW5更换转向助力液3.2L',  '更换转向助力液',     'sys',                 0,             10000000,    0,                  100000,        ',3.2L,',                    ',RW-W5-*,',                       '*',       50000,        'km',       3,         'introduce6.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RWW5更换火花塞3.2L',     '更换火花塞',          'sys',                 0,             10000000,    0,                  100000,        ',3.2L,',                    ',RW-W5-*,',                       '*',       30000,       'km',       4,         'introduce7.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RWW5更换变速箱油3.2L',   '更换变速箱油',        'sys',                 0,             10000000,    0,                  100000,        ',3.2L,',                    ',RW-W5-*,',                     '*',       80000,       'km',       5,         'introduce8.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RWW5正时皮带涨紧器3.2L', '更换正时皮带及涨紧器',  'sys',                 0,             10000000,    0,                  100000,       ',3.2L,',                    ',RW-W5-*,',                     '*',        80000,       'km',      45,         'introduce9.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+        
+              ('RW750换机油1.8T',        '换机油',              'sys',                 0,             10000000,   0,                  100000,        ',1.8T,',                     ',RW-750*,RW-750---18T,',       '*',       5000,        'km',       3,         'introduce1.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW750换机油2.5L',        '换机油',              'sys',                 0,             10000000,   0,                  100000,       ',2.5L,',                     ',RW-750*,RW-750---25L,',           '*',       5000,        'km',       3,      'introduce1.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW750更换机油滤芯',  '更换机油滤芯',        'sys',                 0,             10000000,    0,                  100000,            '*',                     ',RW-750*,RW-750---18T,RW-750---25L,',  '*',       5000,        'km',       2,       'introduce2.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW750更换空气滤芯',  '更换空气滤芯',        'sys',                 0,             10000000,    0,                  100000,            '*',                     ',RW-750*,',                             '*',       10000,       'km',       1,       'introduce3.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW750更换空调滤芯',  '更换空调滤芯',        'sys',                 0,             10000000,    0,                  100000,            '*',                     ',RW-750*,',                             '*',       10000,       'km',       1.5,     'introduce4.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW750更换燃油滤芯',  '更换燃油滤芯',        'sys',                 0,             10000000,    0,                  100000,            '*',                     ',RW-750*,',                             '*',       20000,       'km',       1.5,     'introduce5.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW750更换转向助力液',  '更换转向助力液',     'sys',                 0,             10000000,    0,                  100000,            '*',                    ',RW-750*,',                               '*',       50000,       'km',       2,      'introduce6.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW750更换火花塞',     '更换火花塞',          'sys',                 0,             10000000,    0,                  100000,            '*',                    ',RW-750*,',                               '*',       30000,       'km',       4,    'introduce7.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW750更换变速箱油',   '更换变速箱油',        'sys',                 0,             10000000,    0,                  100000,            '*',                    ',RW-750*,',                             '*',       80000,       'km',       5,        'introduce8.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW750正时皮带涨紧器1.8T', '更换正时皮带及涨紧器',  'sys',                 0,             10000000,    0,                  100000,     ',1.8T,',                 ',RW-750*,',                             '*',       80000,       'km',      45,         'introduce9.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW750正时皮带涨紧器2.5L', '更换正时皮带及涨紧器',  'sys',                 0,             10000000,    0,                  100000,     ',2.5L,',                 ',RW-750*,',                             '*',       80000,       'km',      45,         'introduce9.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+        
+              ('RW950换机油',        '换机油',              'sys',                 0,             10000000,   0,                  100000,       ',2.0L,2.4L,',                ',RW-950*,RW-950---20L,RW-950---24L,',  '*',       5000,        'km',       3,    'introduce1.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW950换机油3.0L',    '换机油',              'sys',                 0,             10000000,   0,                  100000,        ',3.0L,',                     ',RW-950*,RW-950---30L,',              '*',       5000,        'km',       3,     'introduce1.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW950更换机油滤芯',  '更换机油滤芯',        'sys',                 0,             10000000,    0,                  100000,        ',2.0L,2.4L,',               ',RW-950*,RW-950---20L,RW-950---24L,',   '*',       5000,        'km',       2,     'introduce2.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW950更换机油滤芯3.0L', '更换机油滤芯',     'sys',                 0,             10000000,    0,                  100000,        ',3.0L,',                     ',RW-950*,RW-950---30L,',               '*',       5000,        'km',       2,     'introduce2.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW950更换空气滤芯',  '更换空气滤芯',        'sys',                 0,             10000000,    0,                  100000,            '*',                     ',RW-950*,',                             '*',       10000,       'km',       1,     'introduce3.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW950更换空调滤芯',  '更换空调滤芯',        'sys',                 0,             10000000,    0,                  100000,            '*',                     ',RW-950*,',                             '*',       10000,       'km',       1.5,   'introduce4.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW950更换燃油滤芯',  '更换燃油滤芯',        'sys',                 0,             10000000,    0,                  100000,            '*',                     ',RW-950*,',                             '*',       20000,       'km',       1.5,   'introduce5.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW950更换转向助力液',  '更换转向助力液',     'sys',                 0,             10000000,    0,                  100000,            '*',                    ',RW-950*,',                             '*',       50000,       'km',       3,      'introduce6.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW950更换火花塞2.0L',  '更换火花塞',          'sys',                 0,             10000000,    0,                  100000,        ',2.0L,',                    ',RW-950*,',                          '*',       30000,       'km',       4,      'introduce7.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW950更换火花塞2.4L',  '更换火花塞',          'sys',                 0,             10000000,    0,                  100000,        ',2.4L,',                    ',RW-950*,',                          '*',       30000,       'km',       4,        'introduce7.html',   null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW950更换火花塞3.0L',  '更换火花塞',          'sys',                 0,             10000000,    0,                  100000,        ',3.0L,',                    ',RW-950*,',                          '*',       30000,       'km',       4,       'introduce7.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW950更换变速箱油',   '更换变速箱油',        'sys',                 0,             10000000,    0,                  100000,            '*',                    ',RW-950*,',                            '*',       80000,       'km',       5,         'introduce8.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW950正时皮带涨紧器', '更换正时皮带及涨紧器',  'sys',                 0,             10000000,    0,                  100000,      ',2.0L,2.4L,',                  ',RW-950*,',                         '*',       80000,       'km',      50,         'introduce9.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} ),
+              ('RW950正时皮带涨紧器3.0L', '更换正时皮带及涨紧器',  'sys',                 0,        10000000,    0,                  100000,         ',3.0L,',                     ',RW-950*,',                         '*',       80000,       'km',      50,         'introduce9.html',     null,             1,       0,       #{createdDatetime}, #{updatedDatetime} );
+    
+    </insert>
+    
+    <insert id="insertBasicSparePartGroups" parameterType="map">
+        
+        insert into t_basic_spare_part_group
+        (code,               maintenanceCode,       name,            minSelected, maxSelected, description, actived, deleted, createdDatetime,   updatedDatetime)
+        values
+        ('RW350机油组4L',    'RW350换机油',         'RW350机油组4L',    1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW350机油滤芯组',  'RW350更换机油滤芯',    'RW350机油滤芯组',  1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW350空气滤芯组',  'RW350更换空气滤芯',    'RW350空气滤芯组',  1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW350空调滤芯组',  'RW350更换空调滤芯',    'RW350空调滤芯组',  1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW350燃油滤芯组',  'RW350更换燃油滤芯',    'RW350燃油滤芯组',  1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW350转向助力液组', 'RW350更换转向助力液', 'RW350转向助力液组',  1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW350火花塞组',    'RW350更换火花塞',      'RW350火花塞组',      1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW350变速箱油组',    'RW350更换变速箱油',  'RW350变速箱油组',      1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW350正时皮带涨紧器组','RW350正时皮带涨紧器','RW350正时皮带涨紧器组', 1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+    
+        ('RW550机油组5L',    'RW550换机油',         'RW550机油组5L',    1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW550机油滤芯组',  'RW550更换机油滤芯',    'RW550机油滤芯组',  1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW550空气滤芯组',  'RW550更换空气滤芯',    'RW550空气滤芯组',  1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW550空调滤芯组',  'RW550更换空调滤芯',    'RW550空调滤芯组',  1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW550燃油滤芯组',  'RW550更换燃油滤芯',    'RW550燃油滤芯组',  1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW550转向助力液组', 'RW550更换转向助力液', 'RW550转向助力液组',  1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW550火花塞组',    'RW550更换火花塞',      'RW550火花塞组',      1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW550变速箱油组',    'RW550更换变速箱油',  'RW550变速箱油组',      1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW550正时皮带涨紧器组1.8L','RW550正时皮带涨紧器1.8L','RW550正时皮带涨紧器组1.8L', 1, 1,       "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW550正时皮带涨紧器组1.8T','RW550正时皮带涨紧器1.8T','RW550正时皮带涨紧器组1.8T', 1, 1,       "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+    
+        ('RWW51.8T机油组5L',    'RWW5换机油1.8T',         'RWW5 1.8T 机油组5L',    1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RWW51.8T机油滤芯组',  'RWW5更换机油滤芯1.8T',    'RWW5 1.8T 机油滤芯组',  1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RWW51.8T空气滤芯组',  'RWW5更换空气滤芯1.8T',    'RWW5 1.8T 空气滤芯组',  1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RWW51.8T空调滤芯组',  'RWW5更换空调滤芯1.8T',    'RWW5 1.8T 空调滤芯组',  1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RWW51.8T燃油滤芯组',  'RWW5更换燃油滤芯1.8T',    'RWW5 1.8T 燃油滤芯组',  1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RWW51.8T转向助力液组', 'RWW5更换转向助力液1.8T', 'RWW5 1.8T 转向助力液组',  1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RWW51.8T火花塞组',    'RWW5更换火花塞1.8T',      'RWW5 1.8T 火花塞组',      1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RWW51.8T变速箱油组',    'RWW5更换变速箱油1.8T',  'RWW5 1.8T 变速箱油组',      1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RWW51.8T正时皮带涨紧器组','RWW5正时皮带涨紧器1.8T','RWW5 1.8T 正时皮带涨紧器组', 1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+    
+        ('RWW53.2L机油组10L',    'RWW5换机油3.2L',         'RWW5 3.2L 机油组10L',    1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RWW53.2L机油滤芯组',  'RWW5更换机油滤芯3.2L',    'RWW5 3.2L 机油滤芯组',  1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RWW53.2L空气滤芯组',  'RWW5更换空气滤芯3.2L',    'RWW5 3.2L 空气滤芯组',  1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RWW53.2L空调滤芯组',  'RWW5更换空调滤芯3.2L',    'RWW5 3.2L 空调滤芯组',  1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RWW53.2L燃油滤芯组',  'RWW5更换燃油滤芯3.2L',    'RWW5 3.2L 燃油滤芯组',  1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RWW53.2L转向助力液组', 'RWW5更换转向助力液3.2L', 'RWW5 3.2L 转向助力液组',  1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RWW53.2L火花塞组',    'RWW5更换火花塞3.2L',      'RWW5 3.2L 火花塞组',      1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RWW53.2L变速箱油组',    'RWW5更换变速箱油3.2L',  'RWW5 3.2L 变速箱油组',      1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RWW53.2L正时皮带涨紧器组','RWW5正时皮带涨紧器3.2L','RWW5 3.2L 正时皮带涨紧器组', 1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+    
+        ('RW7501.8T机油组5L', 'RW750换机油1.8T',           'RW750 1.8T 机油组5L',    1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW7502.5L机油组6L', 'RW750换机油2.5L',           'RW750 2.5L 机油组6L',    1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW750机油滤芯组',  'RW750更换机油滤芯',          'RW750机油滤芯组',         1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW750空气滤芯组',  'RW750更换空气滤芯',          'RW750空气滤芯组',           1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW750空调滤芯组',  'RW750更换空调滤芯',           'RW750空调滤芯组',          1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW750燃油滤芯组',  'RW750更换燃油滤芯',          'RW750燃油滤芯组',           1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW750转向助力液组', 'RW750更换转向助力液',         'RW750转向助力液组',        1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW750火花塞组',    'RW750更换火花塞',              'RW750火花塞组',            1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW750变速箱油组',    'RW750更换变速箱油',            'RW750变速箱油组',         1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW7501.8T正时皮带涨紧器组','RW750正时皮带涨紧器1.8T','RW750 1.8T 正时皮带涨紧器组', 1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW7502.5L正时皮带涨紧器组','RW750正时皮带涨紧器2.5L','RW750 2.5L 正时皮带涨紧器组', 1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+    
+        ('RW950机油组5L',     'RW950换机油',            'RW950 机油组5L',         1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW9503.0L机油组6L', 'RW950换机油3.0L',         'RW950 3.0L 机油组6L',    1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW950机油滤芯组',  'RW950更换机油滤芯',          'RW950机油滤芯组',         1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW9503.0L机油滤芯组', 'RW950更换机油滤芯3.0L',   'RW950 3.0L 机油滤芯组',         1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW950空气滤芯组',  'RW950更换空气滤芯',          'RW950空气滤芯组',           1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW950空调滤芯组',  'RW950更换空调滤芯',           'RW950空调滤芯组',          1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW950燃油滤芯组',  'RW950更换燃油滤芯',          'RW950燃油滤芯组',           1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW950转向助力液组', 'RW950更换转向助力液',         'RW950转向助力液组',        1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW9502.0L火花塞组', 'RW950更换火花塞2.0L',        'RW950火花塞组',            1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW9502.4L火花塞组', 'RW950更换火花塞2.4L',        'RW950火花塞组',            1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW9503.0L火花塞组', 'RW950更换火花塞3.0L',        'RW950火花塞组',            1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW950变速箱油组',    'RW950更换变速箱油',            'RW950变速箱油组',         1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW950正时皮带涨紧器组','RW950正时皮带涨紧器',       'RW950正时皮带涨紧器组',    1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('RW9503.0L正时皮带涨紧器组','RW950正时皮带涨紧器3.0L','RW950 3.0L 正时皮带涨紧器组', 1,           1,           "",           1,       0,      #{createdDatetime}, #{updatedDatetime} );
+    
+    </insert>
+    
+    <insert id="insertBasicSparePartGroupeds" parameterType="map">
+        
+        insert into t_basic_spare_part_grouped
+        (code,                                  sparePartGroupCode,   sparePartCode,  selectMode, amount, description, actived, deleted, createdDatetime,   updatedDatetime)
+        values
+        ('1昆仑机油（含原厂垫片）',               'RW350机油组4L',      '35009',        'checked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('2嘉实多极护机油 5W-30（含原厂垫片）',    'RW350机油组4L',      '35010',        'unchecked', 1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('3嘉实多极护机油 0W-30（含原厂垫片）',    'RW350机油组4L',      '35011',        'unchecked', 1,      "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('4机油滤清器总成',                      'RW350机油滤芯组',     '35001',        'must',      1,      "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('5滤芯',                                'RW350空气滤芯组',    '35002',         'must',      1,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('6空调滤清器滤芯',                       'RW350空调滤芯组',    '35003',        'must',      1,      "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('7滤清器总成（外置式）',                 'RW350燃油滤芯组',     '35004',        'must',      1,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('8动力转向液',                           'RW350转向助力液组',  '35005',        'must',      1,      "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('9火花塞',                               'RW350火花塞组',      '35006',        'must',      4,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('10自动变速箱传动液 （1L)',               'RW350变速箱油组',     '35007',        'must',      6,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('11正时皮带及涨紧器',               'RW350正时皮带涨紧器组',     '35008',        'must',      1,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+    
+        ('12昆仑机油5W-40（含原厂垫片）5L',        'RW550机油组5L',      '55010',        'checked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('13壳牌机油5W-40（含原厂垫片）5L',        'RW550机油组5L',      '55011',        'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('14壳牌机油0W-40（含原厂垫片）5L',        'RW550机油组5L',      '55012',        'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('15美孚一号5W-40（含原厂垫片）5L',        'RW550机油组5L',      '55013',        'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('16美孚一号0W-40（含原厂垫片）5L',        'RW550机油组5L',      '55014',        'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('17嘉实多极护机油 5W-40（含原厂垫片）5L',  'RW550机油组5L',      '55015',        'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('18嘉实多极护机油 0W-40（含原厂垫片）5L',  'RW550机油组5L',      '55016',        'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('19机油滤清器总成',                      'RW550机油滤芯组',     '55001',        'must',      1,      "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('20滤芯',                                'RW550空气滤芯组',    '55002',         'must',      1,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('21空调滤清器滤芯',                       'RW550空调滤芯组',    '55003',        'must',      1,      "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('22滤清器总成（外置式）',                 'RW550燃油滤芯组',     '55004',        'must',      1,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('23动力转向液',                           'RW550转向助力液组',  '55005',        'must',      1,      "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('24火花塞',                               'RW550火花塞组',      '55006',        'must',      4,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('25自动变速箱传动液 （1L)',               'RW550变速箱油组',     '55007',        'must',      6,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('261.8L正时皮带及涨紧器（一套）', 'RW550正时皮带涨紧器组1.8L',   '55008',        'must',      1,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('271.8T正时皮带及涨紧器（一套）', 'RW550正时皮带涨紧器组1.8T',   '55009',        'must',      1,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+    
+        ('28昆仑机油5W-40（含原厂垫片）5L',        'RWW51.8T机油组5L',      '514',          'checked',    1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('29壳牌机油5W-40（含原厂垫片）5L',        'RWW51.8T机油组5L',      '515',          'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('30壳牌机油0w-40（含原厂垫片）5L',        'RWW51.8T机油组5L',      '516',          'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('31美孚一号5W-40（含原厂垫片）5L',        'RWW51.8T机油组5L',      '517',        'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('32美孚一号0W-40（含原厂垫片）5L',        'RWW51.8T机油组5L',      '518',        'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('33嘉实多极护机油 5W-40（含原厂垫片）5L',  'RWW51.8T机油组5L',      '519',        'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('34嘉实多极护机油 0W-40（含原厂垫片）5L',  'RWW51.8T机油组5L',      '520',        'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('35机油滤清器总成',                      'RWW51.8T机油滤芯组',     '501',          'must',      1,      "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('36滤芯',                                'RWW51.8T空气滤芯组',    '503',          'must',      1,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('37空调滤清器滤芯',                       'RWW51.8T空调滤芯组',    '505',           'must',      1,      "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('38滤清器总成（外置式）',                 'RWW51.8T燃油滤芯组',     '506',          'must',      1,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('39动力转向液',                           'RWW51.8T转向助力液组',  '508',          'must',      1,      "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('40火花塞',                               'RWW51.8T火花塞组',      '509',          'must',      4,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('41自动变速箱传动液 （1L)',               'RWW51.8T变速箱油组',     '510',           'must',      6,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('42正时皮带及涨紧器（一套）',        'RWW51.8T正时皮带涨紧器组',     '512',          'must',      1,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+    
+        ('43昆仑机油5W-40（含原厂垫片）10L',        'RWW53.2L机油组10L',      '521',          'checked',    1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('44壳牌机油5W-40（含原厂垫片）10L',        'RWW53.2L机油组10L',      '522',          'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('45壳牌机油0w-40（含原厂垫片）10L',        'RWW53.2L机油组10L',      '523',          'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('46美孚一号5W-40（含原厂垫片）10L',        'RWW53.2L机油组10L',      '524',        'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('47美孚一号0W-40（含原厂垫片）10L',        'RWW53.2L机油组10L',      '525',        'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('48嘉实多极护机油 5W-40（含原厂垫片）10L',  'RWW53.2L机油组10L',      '526',        'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('49嘉实多极护机油 0W-40（含原厂垫片）10L',  'RWW53.2L机油组10L',      '527',        'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('50机油滤清器总成',                      'RWW53.2L机油滤芯组',     '502',          'must',      1,      "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('51滤芯',                                'RWW53.2L空气滤芯组',    '504',          'must',      1,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('52空调滤清器滤芯',                       'RWW53.2L空调滤芯组',    '505',           'must',      2,      "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('53滤清器总成（外置式）',                 'RWW53.2L燃油滤芯组',     '507',          'must',      1,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('54动力转向液',                           'RWW53.2L转向助力液组',   '508',          'must',      1,      "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('55火花塞',                               'RWW53.2L火花塞组',      '509',          'must',      6,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('56自动变速箱传动液 （1L)',               'RWW53.2L变速箱油组',     '511',           'must',      8,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('57正时皮带及涨紧器（一套）',        'RWW53.2L正时皮带涨紧器组',     '513',          'must',      1,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+    
+        ('58昆仑机油5W-40（含原厂垫片）5L',        'RW7501.8T机油组5L',      '75010',          'checked',    1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('59壳牌机油5W-40（含原厂垫片）5L',        'RW7501.8T机油组5L',      '75011',          'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('60壳牌机油0w-40（含原厂垫片）5L',        'RW7501.8T机油组5L',      '75012',          'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('61美孚一号5W-40（含原厂垫片）5L',        'RW7501.8T机油组5L',      '75013',        'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('62美孚一号0W-40（含原厂垫片）5L',        'RW7501.8T机油组5L',      '75014',        'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('63嘉实多极护机油 5W-40（含原厂垫片）5L',  'RW7501.8T机油组5L',      '75015',        'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('64嘉实多极护机油 0W-40（含原厂垫片）5L',  'RW7501.8T机油组5L',      '75016',        'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+
+        ('65昆仑机油5W-40（含原厂垫片）6L',        'RW7502.5L机油组6L',      '75017',          'checked',    1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('66壳牌机油5W-40（含原厂垫片）6L',        'RW7502.5L机油组6L',      '75018',          'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('67壳牌机油0w-40（含原厂垫片）6L',        'RW7502.5L机油组6L',      '75019',          'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('68美孚一号5W-40（含原厂垫片）6L',        'RW7502.5L机油组6L',      '75020',        'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('69美孚一号0W-40（含原厂垫片）6L',        'RW7502.5L机油组6L',      '75021',        'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('70嘉实多极护机油 5W-40（含原厂垫片）6L',  'RW7502.5L机油组6L',      '75022',        'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('71嘉实多极护机油 0W-40（含原厂垫片）6L',  'RW7502.5L机油组6L',      '75023',        'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+
+        ('72机油滤清器总成',                      'RW750机油滤芯组',     '75001',          'must',      1,      "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('73滤芯',                                'RW750空气滤芯组',    '75002',          'must',      1,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('74空调滤清器滤芯',                       'RW750空调滤芯组',    '75003',           'must',      2,      "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('75滤清器总成（外置式）',                 'RW750燃油滤芯组',     '75004',          'must',      1,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('76动力转向液',                           'RW750转向助力液组',   '75005',          'must',      1,      "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('77火花塞',                               'RW750火花塞组',      '75006',          'must',      6,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('78自动变速箱传动液 （1L)',               'RW750变速箱油组',     '75007',           'must',      6,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('79正时皮带及涨紧器（一套）1.8T', 'RW7501.8T正时皮带涨紧器组',     '75008',          'must',      1,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('80正时皮带及涨紧器（一套）2.5L', 'RW7502.5L正时皮带涨紧器组',     '75009',          'must',      1,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+    
+        ('81昆仑机油（含原厂垫片）5L',             'RW950机油组5L',          '95013',          'checked',    1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('82嘉实多极护机油 5W-30（含原厂垫片）5L',  'RW950机油组5L',          '95014',          'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+    
+        ('83昆仑机油（含原厂垫片）6L',             'RW9503.0L机油组6L',      '95015',          'checked',    1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('84嘉实多极护机油 5W-30（含原厂垫片）6L',  'RW9503.0L机油组6L',      '95016',          'unchecked',   1,      "",          1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+
+        ('85机油滤清器总成',                      'RW950机油滤芯组',     '95001',          'must',      1,      "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('85a机油滤清器总成',                 'RW9503.0L机油滤芯组',     '95002',          'must',      1,      "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+
+        ('86滤芯',                                'RW950空气滤芯组',    '95003',          'must',      1,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('87空调滤清器滤芯',                       'RW950空调滤芯组',    '95004',           'must',      2,      "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('88滤清器总成（外置式）',                 'RW950燃油滤芯组',     '95005',          'must',      1,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('89动力转向液',                           'RW950转向助力液组',   '95006',          'must',      1,      "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+
+        ('90a火花塞',                             'RW9502.0L火花塞组',      '75007',          'must',      4,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('90b火花塞',                             'RW9502.4L火花塞组',      '75008',          'must',      4,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('90c火花塞',                             'RW9503.0L火花塞组',      '95009',          'must',      6,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+
+        ('91自动变速箱传动液 （1L)',               'RW950变速箱油组',        '95010',           'must',      6,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+
+        ('92正时皮带及涨紧器（一套）',      'RW950正时皮带涨紧器组',         '95011',          'must',      1,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} ),
+        ('93正时皮带及涨紧器（一套）',      'RW9503.0L正时皮带涨紧器组',     '95012',          'must',      1,     "",           1,       0,      #{createdDatetime}, #{updatedDatetime} );
+    
+    </insert>
+    
+</mapper> 

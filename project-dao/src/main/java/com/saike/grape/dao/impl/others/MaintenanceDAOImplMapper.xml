@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.saike.grape.dao.impl.others.MaintenanceDAOImplMapper">
+
+    <resultMap id="selectByUserVehicleResultMap" type="maintenance" >
+        <id property="id" column="m_id" javaType="long"/>
+        <result property="code" column="m_code" javaType="string"/>
+        <result property="name" column="m_name" javaType="string"/>
+        <result property="periodValue" column="m_periodValue" javaType="int"/>
+        <result property="periodUnit" column="m_periodUnit" 
+            typeHandler="com.saike.grape.dao.utils.typehandler.MaintenancePeriodUnitEnumTypeHandler"/>
+        <result property="laborHour" column="m_laborHour" javaType="float"/>
+        <result property="docURL" column="m_docURL" javaType="string"/>
+        <result property="description" column="m_description" javaType="string"/>
+    </resultMap>
+	
+	<select id="selectByUserVehicle" parameterType="map" resultMap="selectByUserVehicleResultMap">
+        select
+            m.id as m_id,
+            m.code as m_code,
+            m.name as m_name,
+            m.periodValue as m_periodValue,
+            m.periodUnit as m_periodUnit,
+            m.laborHour as m_laborHour,
+            m.docURL as m_docURL,
+            m.description as m_description,
+            g.id as g_id,
+            g.code as g_code,
+            g.maintenanceCode as g_maintenanceCode,
+            g.name as g_name,
+            g.minSelected as g_minSelected,
+            g.maxSelected as g_maxSelected,
+            g.description as g_description,
+            gd.id as gd_id,
+            gd.sparePartGroupCode as gd_sparePartGroupCode,
+            gd.sparePartCode as gd_sparePartCode,
+            gd.selectMode as gd_selectMode,
+            gd.amount as gd_amount,
+            p.id as p_id,
+            p.code as p_code,
+            p.name as p_name,
+            p.price as p_price,
+            p.discountPrice as p_discountPrice,
+            p.imageURL as p_imageURL,
+            p.description as p_description
+        from ${t_maintenance} m 
+            inner join ${t_spare_part_group} g
+               on m.code = g.maintenanceCode
+                 <if test="maintenanceOwnerCode != null">
+                    and m.maintenanceOwnerCode = #{maintenanceOwnerCode}
+                 </if>
+                 and m.actived = true and m.deleted = false
+	             and ( m.fitToMinKm &lt;= #{userVehicle.kmTraveled} and #{userVehicle.kmTraveled} &lt;= m.fitToMaxKm )
+	             and ( m.fitToMinDaysUsed &lt;= #{daysUsed} and #{daysUsed} &lt;= m.fitToMaxDaysUsed )
+	             and ( m.fitToEmissionVolume = '*' or m.fitToEmissionVolume like '%,${vehicle.emissionVolume},%' )
+	             and ( m.fitToVehicleScope = '*'
+	                    <foreach item="wildCode" collection="vehicleScopeSearchConditions">
+	                        or m.fitToVehicleScope like '%,${wildCode},%'
+	                    </foreach>
+	                    or m.fitToVehicleScope like '%,${userVehicle.vehicleCode},%' )
+	        inner join ${t_spare_part_grouped} gd
+	           on g.code = gd.sparePartGroupCode
+	        inner join ${t_spare_part} p
+	           on gd.sparePartCode = p.code
+	             and p.actived = true and p.deleted = false
+	    order by g.createdDatetime asc, gd.createdDatetime asc
+	</select>
+
+	
+
+	<select id="getDealerMaintenance" parameterType="String"
+		resultType="map">
+		select m.maintenanceOwnerCode as dealerCode,
+			m.code as maintenanceCode,
+			m.name as dealerMaintenanceName,
+			sp.name as dealerSparePartName,
+			sp.price as dealerSparePartPrice,
+			sp.discountPrice as dealerSparePartdiscountPrice
+		from
+			t_dealer_maintenance m,
+			t_dealer_spare_part_group s,
+			t_dealer_spare_part_grouped sd,
+			t_dealer_spare_part sp
+		where m.code=s.maintenanceCode
+			and s.code= sd.sparePartGroupCode
+			and sd.sparePartCode=sp.code
+			and m.actived=TRUE
+			and m.deleted=FALSE
+			and m.maintenanceOwnerCode=#{dealerCode}
+			order by m.createdDatetime desc
+	</select>
+	
+	<select id="countDealerMaintenance" parameterType="String"
+		resultType="int">
+		select count(1) as counts
+		from
+			t_dealer_maintenance m,
+			t_dealer_spare_part_group s,
+			t_dealer_spare_part_grouped sd,
+			t_dealer_spare_part sp
+		where m.code=s.maintenanceCode
+			and s.code= sd.sparePartGroupCode
+			and sd.sparePartCode=sp.code
+			and m.actived=TRUE
+			and m.deleted=FALSE
+			and m.maintenanceOwnerCode=#{dealerCode}
+	</select>
+
+	<select id="getMaintenancesByVehicleCode" parameterType="map"
+		resultMap="selectByUserVehicleResultMap">
+		select
+            m.id as m_id,
+            m.code as m_code,
+            m.name as m_name,
+            m.periodValue as m_periodValue,
+            m.periodUnit as m_periodUnit,
+            m.laborHour as m_laborHour,
+            m.docURL as m_docURL,
+            m.description as m_description,
+            g.id as g_id,
+            g.code as g_code,
+            g.maintenanceCode as g_maintenanceCode,
+            g.name as g_name,
+            g.minSelected as g_minSelected,
+            g.maxSelected as g_maxSelected,
+            g.description as g_description,
+            gd.id as gd_id,
+            gd.sparePartGroupCode as gd_sparePartGroupCode,
+            gd.sparePartCode as gd_sparePartCode,
+            gd.selectMode as gd_selectMode,
+            gd.amount as gd_amount,
+            p.id as p_id,
+            p.code as p_code,
+            p.name as p_name,
+            p.price as p_price,
+            p.discountPrice as p_discountPrice,
+            p.imageURL as p_imageURL,
+            p.description as p_description
+        from t_basic_maintenance m 
+            inner join t_basic_spare_part_group g
+               on m.code = g.maintenanceCode
+               and m.actived = true and m.deleted = false
+               and m.name in('换机油','更换机油滤芯')
+	           and m.fitToVehicleScope like '%,${vehicleCode},%'
+	        inner join t_basic_spare_part_grouped gd
+	           on g.code = gd.sparePartGroupCode
+	        inner join t_basic_spare_part p
+	           on gd.sparePartCode = p.code
+	             and p.actived = true and p.deleted = false
+		
+	</select>
+	
+	<select id="getAllMaintenances" parameterType="map" resultMap="selectByUserVehicleResultMap">
+        select
+            m.id as m_id,
+            m.code as m_code,
+            m.name as m_name,
+            m.periodValue as m_periodValue,
+            m.periodUnit as m_periodUnit,
+            m.laborHour as m_laborHour,
+            m.docURL as m_docURL,
+            m.description as m_description,
+            g.id as g_id,
+            g.code as g_code,
+            g.maintenanceCode as g_maintenanceCode,
+            g.name as g_name,
+            g.minSelected as g_minSelected,
+            g.maxSelected as g_maxSelected,
+            g.description as g_description,
+            gd.id as gd_id,
+            gd.sparePartGroupCode as gd_sparePartGroupCode,
+            gd.sparePartCode as gd_sparePartCode,
+            gd.selectMode as gd_selectMode,
+            gd.amount as gd_amount,
+            p.id as p_id,
+            p.code as p_code,
+            p.name as p_name,
+            p.price as p_price,
+            p.discountPrice as p_discountPrice,
+            p.imageURL as p_imageURL,
+            p.description as p_description
+        from ${t_maintenance} m 
+            inner join ${t_spare_part_group} g
+               on m.code = g.maintenanceCode
+                 and m.maintenanceOwnerCode = #{ownerCode}
+                 and m.actived = true and m.deleted = false
+            inner join ${t_spare_part_grouped} gd
+               on g.code = gd.sparePartGroupCode
+            inner join ${t_spare_part} p
+               on gd.sparePartCode = p.code
+                 and p.actived = true and p.deleted = false
+	</select>
+	
+	<select id="getMaintenanceById" parameterType="map" 
+					resultMap="selectByUserVehicleResultMap">
+        select
+            m.id as m_id,
+            m.code as m_code,
+            m.name as m_name,
+            m.periodValue as m_periodValue,
+            m.periodUnit as m_periodUnit,
+            m.laborHour as m_laborHour,
+            m.docURL as m_docURL,
+            m.description as m_description,
+            g.id as g_id,
+            g.code as g_code,
+            g.maintenanceCode as g_maintenanceCode,
+            g.name as g_name,
+            g.minSelected as g_minSelected,
+            g.maxSelected as g_maxSelected,
+            g.description as g_description,
+            gd.id as gd_id,
+            gd.sparePartGroupCode as gd_sparePartGroupCode,
+            gd.sparePartCode as gd_sparePartCode,
+            gd.selectMode as gd_selectMode,
+            gd.amount as gd_amount,
+            p.id as p_id,
+            p.code as p_code,
+            p.name as p_name,
+            p.price as p_price,
+            p.discountPrice as p_discountPrice,
+            p.imageURL as p_imageURL,
+            p.description as p_description
+        from ${t_maintenance} m 
+            inner join ${t_spare_part_group} g
+               on m.code = g.maintenanceCode
+                 <!-- and m.maintenanceOwnerCode = #{ownerCode} -->
+                 and m.actived = true and m.deleted = false
+            inner join ${t_spare_part_grouped} gd
+               on g.code = gd.sparePartGroupCode
+            inner join ${t_spare_part} p
+               on gd.sparePartCode = p.code
+                 and p.actived = true and p.deleted = false
+        where m.id=#{id}          
+	</select>
+	
+	<select id="getMaintenanceByCode" parameterType="map" 
+					resultMap="selectByUserVehicleResultMap">
+        select
+            m.id as m_id,
+            m.code as m_code,
+            m.name as m_name,
+            m.periodValue as m_periodValue,
+            m.periodUnit as m_periodUnit,
+            m.laborHour as m_laborHour,
+            m.docURL as m_docURL,
+            m.description as m_description,
+            g.id as g_id,
+            g.code as g_code,
+            g.maintenanceCode as g_maintenanceCode,
+            g.name as g_name,
+            g.minSelected as g_minSelected,
+            g.maxSelected as g_maxSelected,
+            g.description as g_description,
+            gd.id as gd_id,
+            gd.sparePartGroupCode as gd_sparePartGroupCode,
+            gd.sparePartCode as gd_sparePartCode,
+            gd.selectMode as gd_selectMode,
+            gd.amount as gd_amount,
+            p.id as p_id,
+            p.code as p_code,
+            p.name as p_name,
+            p.price as p_price,
+            p.discountPrice as p_discountPrice,
+            p.imageURL as p_imageURL,
+            p.description as p_description
+        from ${t_maintenance} m 
+            inner join ${t_spare_part_group} g
+               on m.code = g.maintenanceCode
+                 <!-- and m.maintenanceOwnerCode = #{ownerCode} -->
+                 and m.actived = true and m.deleted = false
+            inner join ${t_spare_part_grouped} gd
+               on g.code = gd.sparePartGroupCode
+            inner join ${t_spare_part} p
+               on gd.sparePartCode = p.code
+                 and p.actived = true and p.deleted = false
+        where m.code=#{code}          
+	</select>
+</mapper> 

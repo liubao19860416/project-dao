@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.saike.grape.dao.impl.others.TreeNodeDAOImplMapper">
+    
+    <select id="getTreeNodeList" parameterType="map" resultType="treeNode">
+        SELECT id,code,name,level,parentCode,
+        fullPath,description,createdDatetime,
+        updatedDatetime 
+        FROM ${table_name} WHERE parentCode IS NULL 
+        AND actived = true AND deleted = false
+    </select>
+    
+    <select id="getTreeBranchList" parameterType="map" resultType="treeNode">
+        SELECT id,code,name,level,parentCode,
+        fullPath,description,createdDatetime,
+        updatedDatetime 
+        FROM ${table_name} WHERE actived = true AND deleted = false 
+        AND parentCode = '${treePath}'
+    </select>
+    
+    <select id="getTreeLeafList" parameterType="map" resultType="treeNode">
+        SELECT id,code,name,level,parentCode,
+        fullPath,description,createdDatetime,
+        updatedDatetime 
+        FROM ${table_name} WHERE actived = true AND deleted = false 
+        AND parentCode = '${branchPath}'
+    </select>
+    
+    <select id="getTreeNodeByCodeList" parameterType="map" resultType="treeNode">
+        SELECT id,code,name,level,parentCode,
+        fullPath,description,createdDatetime,
+        updatedDatetime 
+        FROM ${table_name} WHERE actived = true AND deleted = false 
+        AND code in
+        <foreach item="item" index="index" collection="code" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+    
+</mapper> 

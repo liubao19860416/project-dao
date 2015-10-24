@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saike.grape.dao.impl.others.UserCouponDAOImplMapper">
+	<!-- 基本参数列名列表 -->
+	<sql id="Base_Column_List">
+		id, code,userCode, couponCode, verifyCode, userMobilePhone,
+		orderCode,
+		status, userVehiclePlateNumber,
+		actived, deleted,validInDays,
+		createdDatetime, updatedDatetime,description,promotionCode
+	</sql>
+	
+	<sql id="UserCoupon_Coupon_Select">
+		SELECT
+		uc.id, uc.code,uc.userCode, uc.couponCode, uc.verifyCode,
+		uc.userMobilePhone,uc.orderCode,uc.status, uc.userVehiclePlateNumber,
+		uc.actived, uc.deleted,uc.verifyCode,
+		uc.createdDatetime, uc.updatedDatetime,uc.promotionCode,
+		c.code,c.name,c.ruleBrief,c.color1,c.color2,
+		date_format(c.beginDatetime,'%Y-%m-%d %H:%i:%s') as beginDatetime,
+		date_format(c.endDatetime,'%Y-%m-%d %H:%i:%s') as endDatetime,
+		c.ruleDetail,c.moneyAmount,c.validInDays,c.description
+		FROM  T_USER_COUPON uc 
+		INNER JOIN T_COUPON c  
+		ON uc.couponCode=c.code 
+	</sql>
+	
+	<resultMap id="userCouponMap" type="userCoupon">
+		<id property="id" column="id" />
+		<result property="orderCode" column="orderCode" />
+		<result property="code" column="code" />
+		<result property="couponCode" column="couponCode" />
+		<result property="userCode" column="userCode" />
+		<result property="verifyCode" column="verifyCode" />
+		<result property="userMobilePhone" column="userMobilePhone" />
+		<result property="userVehiclePlateNumber" column="userVehiclePlateNumber" />
+		<result property="status" column="status" />
+		<result property="actived" column="actived" />
+		<result property="deleted" column="deleted" />
+		<result property="createDatetime" column="createDatetime" />
+		<result property="updatedDatetime" column="updatedDatetime" />
+		<association javaType="coupon" property="coupon">
+			<result property="code" column="code" javaType="string" />
+			<result property="name" column="name" javaType="string" />
+			<result property="ruleBrief" column="ruleBrief" javaType="string" />
+			<result property="ruleDetail" column="ruleDetail" javaType="string" />
+			<result property="color1" column="color1" javaType="string" />
+			<result property="color2" column="color2" javaType="string" />
+			<result property="beginDatetime" column="beginDatetime" />
+			<result property="endDatetime" column="endDatetime"/>
+			<result property="moneyAmount" column="moneyAmount" javaType="float" />
+			<result property="validInDays" column="validInDays" javaType="int" />
+			<result property="description" column="description" javaType="string" />
+		</association>
+	</resultMap>
+
+	<!-- where查询条件 -->
+	<sql id="userCoupon_query_where">
+		<if test="userCoupon!=null">
+			<!-- 根据code查询用户的保养券 -->
+			<if test="userCoupon.code!=null and userCoupon.code!=''">
+				AND uc.code = #{userCoupon.code}
+			</if>
+			<!-- 根据couponCode查询用户的保养券 -->
+			<if test="userCoupon.couponCode!=null and userCoupon.couponCode!=''">
+				AND uc.couponCode = #{userCoupon.couponCode}
+			</if>
+			<!-- 根据code查询用户的保养券 -->
+			<if test="userCoupon.userCode!=null and userCoupon.userCode!=''">
+				AND uc.userCode = #{userCoupon.userCode}
+			</if>
+			<!-- 根据订单号查询用户的保养券 -->
+			<if test="userCoupon.orderCode!=null and userCoupon.orderCode!=''">
+				AND uc.orderCode=#{userCoupon.orderCode}
+			</if>
+			<!-- 根据状态查询  1已生成，2 已发放，3 已使用，4 已结算 -->
+			<if test="userCoupon.status!=null and userCoupon.status!=''">
+				AND uc.status=#{userCoupon.status}
+			</if>
+			<!-- 根据手机号查询用户的保养券 -->
+			<if test="userCoupon.userMobilePhone!=null 
+					and userCoupon.userMobilePhone!=''">
+				AND uc.userMobilePhone = #{userCoupon.userMobilePhone}
+			</if>
+			<!-- 根据激活状态查询 -->
+			<if test="userCoupon.actived!=null and userCoupon.actived!=''">
+				AND uc.actived=#{userCoupon.actived}
+			</if>
+		</if>
+	</sql>
+
+	<!-- 根据封装在map中的userCoupon对象不为空的参数为查询条件，查询符合条件的用户保养券列表 -->
+	<select id="selectUserCouponsByConditions" parameterType="map"
+		resultMap="userCouponMap">
+		<!-- SELECT
+		<include refid="Base_Column_List" />
+		FROM ${table_name} userCoupon -->
+		<include refid="UserCoupon_Coupon_Select" />
+		
+		<where>
+			<include refid="userCoupon_query_where" />
+		</where>
+		<if test="userCoupon!=null">
+			<if test="userCoupon.createdDatetime != null 
+					and userCoupon.createdDatetime != ''">
+				ORDER BY userCoupon.createdDatetime DESC
+			</if>
+		</if>
+	</select>
+
+	<!-- 根据封装在map中的userCoupon对象不为空的参数为查询条件，查询符合条件的用户保养券列表数量 -->
+	<select id="selectUserCouponsByConditionsCount"
+		parameterType="map" resultType="long">
+		
+		SELECT COUNT(1) 
+		FROM t_user_coupon uc
+		INNER JOIN t_coupon c  
+		ON uc.couponCode=c.code 
+		<where>
+			<include refid="userCoupon_query_where" />
+		</where>
+	</select>
+	
+	
+	<!-- 根据封装在list中的OrderCode集合对象，查询用户保养券列表数量 -->
+	<select id="selectUserCouponListCountByOrderCodeList"
+		parameterType="list" resultType="long">
+		SELECT COUNT(1) 
+		FROM  T_USER_COUPON uc 
+		INNER JOIN T_COUPON c  
+		ON uc.couponCode=c.code
+		<where>
+		    uc.orderCode in
+		   <if test="list!=null and list.size()>0">
+				<foreach item="item" index="index" collection="list" open="("
+					separator="," close=")">
+					#{item}
+				</foreach>
+		   </if>
+		   <if test="list==null or list.size()==0">
+		   		("")
+		   </if>
+		</where>
+	</select>
+
+	<!-- 查询所有用户的优惠券信息 -->
+	<select id="selectAll" resultMap="userCouponMap">
+		<!-- SELECT
+		<include refid="Base_Column_List" />
+		FROM T_USER_COUPON uc -->
+		<include refid="UserCoupon_Coupon_Select" />
+	</select>
+
+	<!-- 根据用户的保养券id，查询保养券相关的信息 -->
+	<select id="selectUserCouponById" resultMap="userCouponMap"
+		parameterType="long">
+		SELECT  
+		uc.id, uc.code,uc.userCode, uc.couponCode, uc.verifyCode,
+		uc.userMobilePhone,uc.orderCode,uc.status, uc.userVehiclePlateNumber,
+		uc.actived, uc.deleted,uc.verifyCode,
+		uc.createdDatetime, uc.updatedDatetime,uc.promotionCode,
+		c.code,c.name,c.ruleBrief,c.color1,c.color2,
+		date_format(c.beginDatetime,'%Y-%m-%d %H:%i:%s') as beginDatetime,
+		date_format(c.endDatetime,'%Y-%m-%d %H:%i:%s') as endDatetime,
+		c.ruleDetail,c.moneyAmount,c.validInDays,c.description
+		FROM  T_USER_COUPON uc INNER JOIN T_COUPON c  
+		ON uc.couponCode=c.code 
+		WHERE 
+		uc.id =#{id}
+	</select>
+	
+	<!-- 根据用户的订单号，查询保养券相关信息 -->
+	<select id="selectUserCouponsByOrderCode" resultMap="userCouponMap"
+		parameterType="string">
+		SELECT  
+		uc.id, uc.code,uc.userCode, uc.couponCode, uc.verifyCode,
+		uc.userMobilePhone,uc.orderCode,uc.status, uc.userVehiclePlateNumber,
+		uc.actived, uc.deleted,uc.verifyCode,
+		uc.createdDatetime, uc.updatedDatetime,uc.promotionCode,
+		c.code,c.name,c.ruleBrief,c.color1,c.color2,
+		date_format(c.beginDatetime,'%Y-%m-%d %H:%i:%s') as beginDatetime,
+		date_format(c.endDatetime,'%Y-%m-%d %H:%i:%s') as endDatetime,
+		c.ruleDetail,c.moneyAmount,c.validInDays,c.description
+		FROM  T_USER_COUPON uc INNER JOIN T_COUPON c  
+		ON uc.couponCode=c.code 
+		WHERE 
+		uc.orderCode =#{orderCode}
+	</select>
+		
+		
+	<!-- 根据用户的订单号，获取保养劵分页集合 ，查询的是当前登录用户的所有订单下面的所有的保养券信息 -->
+	<select id="selectUserCouponsByOrderCodeList" resultMap="userCouponMap"
+		parameterType="list">
+		SELECT  
+		uc.id, uc.code,uc.userCode, uc.couponCode, uc.verifyCode,
+		uc.userMobilePhone,uc.orderCode,uc.status, uc.userVehiclePlateNumber,
+		uc.actived, uc.deleted,uc.verifyCode,
+		uc.createdDatetime, uc.updatedDatetime,uc.promotionCode,
+		c.code,c.name,c.ruleBrief,c.color1,c.color2,
+		date_format(c.beginDatetime,'%Y-%m-%d %H:%i:%s') as beginDatetime,
+		date_format(c.endDatetime,'%Y-%m-%d %H:%i:%s') as endDatetime,
+		c.ruleDetail,c.moneyAmount,c.validInDays,c.description
+		FROM  T_USER_COUPON uc INNER JOIN T_COUPON c  
+		ON uc.couponCode=c.code 
+		<where>
+		    uc.orderCode in
+		   <if test="list!=null and list.size()>0">
+				<foreach item="item" index="index" collection="list" open="("
+					separator="," close=")">
+					#{item}
+				</foreach>
+		   </if>
+		   <if test="list==null or list.size()==0">
+		   		("")
+		   </if>
+		</where>
+		ORDER BY c.updatedDatetime DESC 
+	</select>
+
+	<!-- 按照不为空的参数表列进行插入数据 操作,返回主键id -->
+	<insert id="insertBySelective" parameterType="userCoupon">
+		insert into t_user_coupon
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="code != null">
+				code,
+			</if>
+			<if test="userCode != null">
+				userCode,
+			</if>
+			<if test="couponCode != null">
+				couponCode,
+			</if>
+			<if test="verifyCode != null">
+				verifyCode,
+			</if>
+			<if test="userMobilePhone != null">
+				userMobilePhone,
+			</if>
+			<if test="orderCode != null">
+				orderCode,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="userVehiclePlateNumber != null">
+				userVehiclePlateNumber,
+			</if>
+			<if test="actived != null">
+				actived,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="createdDatetime != null">
+				createdDatetime,
+			</if>
+			<if test="updatedDatetime != null">
+				updatedDatetime,
+			</if>
+			<if test="description != null">
+				description,
+			</if>
+			<if test="promotionCode != null">
+				promotionCode,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id},
+			</if>
+			<if test="code != null">
+				#{code},
+			</if>
+			<if test="userCode != null">
+				#{userCode},
+			</if>
+			<if test="couponCode != null">
+				#{couponCode},
+			</if>
+			<if test="verifyCode != null">
+				#{verifyCode},
+			</if>
+			<if test="userMobilePhone != null">
+				#{userMobilePhone},
+			</if>
+			<if test="orderCode != null">
+				#{orderCode},
+			</if>
+			<if test="status != null">
+				#{status},
+			</if>
+			<if test="userVehiclePlateNumber != null">
+				#{userVehiclePlateNumber},
+			</if>
+			<if test="actived != null">
+				#{actived},
+			</if>
+			<if test="deleted != null">
+				#{deleted},
+			</if>
+			<if test="createdDatetime != null">
+				#{createdDatetime},
+			</if>
+			<if test="updatedDatetime != null">
+				#{updatedDatetime},
+			</if>
+			<if test="description != null">
+				#{description},
+			</if>
+			<if test="promotionCode != null">
+				#{promotionCode},
+			</if>
+		</trim>
+		<selectKey resultType="java.lang.Long" order="AFTER"
+			keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<!-- 根据userCoupon的id，更新优惠券列表信息，只更新不为空的参数 -->
+	<update id="update" parameterType="userCoupon">
+		UPDATE T_USER_COUPON
+		<set>
+			<if test="code != null">
+				code = #{code},
+			</if>
+			<if test="userCode != null">
+				userCode = #{userCode},
+			</if>
+			<if test="couponCode != null">
+				couponCode = #{couponCode},
+			</if>
+			<if test="verifyCode != null">
+				verifyCode = #{verifyCode},
+			</if>
+			<if test="userMobilePhone != null">
+				userMobilePhone = #{userMobilePhone},
+			</if>
+			<if test="orderCode != null">
+				orderCode = #{orderCode},
+			</if>
+			<if test="status != null">
+				status = #{status},
+			</if>
+			<if test="userVehiclePlateNumber != null">
+				userVehiclePlateNumber = #{userVehiclePlateNumber},
+			</if>
+			<if test="actived != null">
+				actived = #{actived},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted},
+			</if>
+			<if test="createdDatetime != null">
+				createdDatetime = #{createdDatetime},
+			</if>
+			<if test="updatedDatetime != null">
+				updatedDatetime = #{updatedDatetime},
+			</if>
+			<if test="description != null">
+				description = #{description},
+			</if>
+			<if test="promotionCode != null">
+				promotionCode = #{promotionCode},
+			</if>
+		</set>
+		WHERE id = #{id}
+	</update>
+
+</mapper>

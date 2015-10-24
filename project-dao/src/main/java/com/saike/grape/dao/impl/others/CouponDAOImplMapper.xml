@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.saike.grape.dao.impl.others.CouponDAOImplMapper">
+	<!-- 基本列名字段信息列表 -->
+	<sql id="Base_Column_List">
+		id, code, name, fitToMaxKm,fitToMinKm,
+		fitToMaxDaysUsed,
+		fitToMinDaysUsed,fitToEmissionVolume,fitToVehicleScope,fitToCity,
+		beginDatetime,
+		endDatetime,moneyAmount, color1,
+		color2,
+		ruleBrief,ruleDetail, actived,
+		deleted,validInDays,
+		createdDatetime, updatedDatetime,description
+	</sql>
+
+	<!-- insert操作已经在baseDAO中实现，需要在这里实现select查询和update更新操作 -->
+
+	<!-- Coupon中的where查询条件 -->
+	<sql id="coupon_query_where">
+		<if test="coupon!=null">
+			<!-- 根据适用最大公里数和最小公里数区间查询 -->
+			<if test="coupon.fitToMaxKm!=null and coupon.fitToMaxKm!=''">
+				AND coupon.fitToMaxKm &lt;= #{couponfitToMaxKm}
+			</if>
+			<if test="coupon.fitToMinKm!=null and coupon.fitToMinKm!=''">
+				AND coupon.fitToMinKm &gt;= #{coupon.fitToMinKm}
+			</if>
+			<!-- 根据适用最大使用年限（天数）和最小使用年限区间查询 -->
+	<if test="coupon.fitToMinDaysUsed!=null and coupon.fitToMinDaysUsed!=''">
+				AND coupon.fitToMinDaysUsed &gt;= #{coupon.fitToMinDaysUsed}
+			</if>
+	<if test="coupon.fitToMaxDaysUsed!=null and coupon.fitToMaxDaysUsed!=''">
+				AND coupon.fitToMaxDaysUsed &lt;= #{coupon.fitToMaxDaysUsed}
+			</if>
+			
+			<!-- 根据code查询 -->
+			<if test="coupon.code!=null and coupon.code!=''">
+				AND coupon.code=#{coupon.code}
+			</if>
+			<!-- 根据保养券（规则）名称模糊查询 -->
+			<if test="coupon.name!=null and coupon.name!=''">
+				AND coupon.name like '%${coupon.name}%'
+			</if>
+			<!-- 查询保养券（规则）金额大于等于该数值的保养券（规则）信息 -->
+			<if test="coupon.moneyAmount!=null and coupon.moneyAmount!=''">
+				AND coupon.moneyAmount &gt;= #{coupon.moneyAmount}
+			</if>
+			<!-- 查询指定日期范围的保养券（规则）信息 -->
+			<if test="coupon.beginDatetime!=null and coupon.beginDatetime!=''">
+				AND coupon.beginDatetime &gt;= #{coupon.beginDatetime}
+			</if>
+			<if test="coupon.endDatetime!=null and coupon.endDatetime!=''">
+				AND coupon.endDatetime &lt;= #{coupon.endDatetime}
+			</if>
+			<!-- 根据激活状态查询 -->
+			<if test="coupon.actived!=null and coupon.actived!=''">
+				AND coupon.actived=#{coupon.actived}
+			</if>
+			<!-- 根据删除状态查询条 -->
+			<if test="coupon.deleted!=null and coupon.deleted!=''">
+				AND coupon.deleted=#{coupon.deleted}
+			</if>
+		</if>
+	</sql>
+
+
+	<!-- 根据封装在map中的查询条件，查询所有的保养券（规则）信息列表 -->
+	<select id="selectAllCouponsByConditions" parameterType="map"
+		resultType="coupon">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM t_coupon coupon
+		<where>
+			<include refid="coupon_query_where" />
+		</where>
+		<!-- <if test="coupon!=null">
+			<if test="coupon.moneyAmount != null and coupon.moneyAmount != ''">
+				ORDER BY coupon.moneyAmount ASC
+			</if>
+		</if> -->
+<!-- <if test="pageIndex != null and pageSize!=null and pageSize!=''and pageSize!=''">
+			LIMIT #{pageIndex},#{pageSize}
+		</if> -->
+	</select>
+
+	<!-- 根据封装在map中的查询条件，查询所有的保养券（规则）信息数量 -->
+<select id="selectAllCouponsByConditionsCount" parameterType="map"
+		resultType="long">
+		SELECT COUNT(1)
+		FROM t_coupon coupon
+		<where>
+			<include refid="coupon_query_where" />
+		</where>
+	</select>
+
+	<!-- 查询当前最新保养券是否是开启 状态-->
+	<select id="getCouponFlag" resultType="string">
+		SELECT
+		c.actived
+		FROM
+		t_coupon c
+		ORDER BY c.updatedDatetime DESC LIMIT 1
+	</select>
+	
+	<!-- 查询当前最新创建的保养券信息（取有效的那条最新记录）-->
+	<select id="selectLatestedCoupon" resultType="coupon">
+		SELECT * FROM t_coupon c 
+		WHERE c.actived=true 
+		ORDER BY c.updatedDatetime DESC LIMIT 1
+	</select>
+	
+	<!-- 查询当前最新保养券是否是开启 状态-->
+	<select id="findByID" resultType="coupon" parameterType="long">
+		SELECT
+		*
+		FROM
+		t_coupon c 
+		where c.id=#{id}
+	</select>
+
+	<!-- 根据主键id，查询所有的保养券（规则）信息列表，获取当前生效的那一条最新的记录信息 -->
+	<select id="selectAll" resultType="coupon">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM t_coupon coupon
+		ORDER BY coupon.updatedDatetime DESC LIMIT 1
+	</select>
+
+	<!-- 批量更新没有实现 -->
+	<!-- 通过主键，更新保养券（规则）信息，仅对不为空的属性内容进行更新 -->
+	<update id="update" parameterType="coupon" >
+		UPDATE t_coupon
+		<set>
+			<if test="code != null">
+				code = #{code},
+			</if>
+			<if test="name != null">
+				name = #{name},
+			</if>
+			
+			<if test="fitToMinKm != null">
+				fitToMinKm = #{fitToMinKm},
+			</if>
+			<if test="fitToMaxKm != null">
+				fitToMaxKm = #{fitToMaxKm},
+			</if>
+			<if test="fitToMinDaysUsed != null">
+				fitToMinDaysUsed = #{fitToMinDaysUsed},
+			</if>
+			<if test="fitToMaxDaysUsed != null">
+				fitToMaxDaysUsed = #{fitToMaxDaysUsed},
+			</if>
+			<if test="fitToEmissionVolume != null">
+				fitToEmissionVolume = #{fitToEmissionVolume},
+			</if>
+			
+			<if test="fitToCity != null">
+				fitToCity = #{fitToCity},
+			</if>
+			<if test="fitToVehicleScope != null">
+				fitToVehicleScope = #{fitToVehicleScope},
+			</if>
+			<if test="beginDatetime != null">
+				beginDatetime = #{beginDatetime},
+			</if>
+			<if test="endDatetime != null">
+				endDatetime = #{endDatetime},
+			</if>
+			<if test="moneyAmount != null">
+				moneyAmount = #{moneyAmount},
+			</if>
+			<if test="color1 != null">
+				color1 = #{color1},
+			</if>
+			<if test="color2 != null">
+				color2 = #{color2},
+			</if>
+			<if test="ruleBrief != null">
+				ruleBrief = #{ruleBrief},
+			</if>
+			<if test="ruleDetail != null">
+				ruleDetail = #{ruleDetail},
+			</if>
+			<if test="actived != null">
+				actived = #{actived},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted},
+			</if>
+			<if test="createdDatetime != null">
+				createdDatetime = #{createdDatetime},
+			</if>
+			<if test="updatedDatetime != null">
+				updatedDatetime = #{updatedDatetime},
+			</if>
+		</set>
+		WHERE id = #{id}
+	</update>
+	
+	<!-- 按照不为空的参数表列进行插入数据 操作,该方法暂时在测试拷贝数据使用 -->
+	<insert id="insertBySelective" parameterType="coupon" >
+		insert into T_COUPON_NEW
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="code != null">
+				code,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="fitToMinKm != null">
+				fitToMinKm,
+			</if>
+			<if test="fitToMaxKm != null">
+				fitToMaxKm,
+			</if>
+			<if test="fitToMinDaysUsed != null">
+				fitToMinDaysUsed,
+			</if>
+			<if test="fitToMaxDaysUsed != null">
+				fitToMaxDaysUsed,
+			</if>
+			<if test="fitToEmissionVolume != null">
+				fitToEmissionVolume,
+			</if>
+			<if test="fitToVehicleScope != null">
+				fitToVehicleScope,
+			</if>
+			<if test="fitToCity != null">
+				fitToCity,
+			</if>
+			<if test="beginDatetime != null">
+				beginDatetime,
+			</if>
+			<if test="endDatetime != null">
+				endDatetime,
+			</if>
+			<if test="moneyAmount != null">
+				moneyAmount,
+			</if>
+			<if test="ruleBrief != null">
+				ruleBrief,
+			</if>
+			<if test="ruleDetail != null">
+				ruleDetail,
+			</if>
+			<if test="color1 != null">
+				color1,
+			</if>
+			<if test="color2 != null">
+				color2,
+			</if>
+			<if test="actived != null">
+				actived,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="createdDatetime != null">
+				createdDatetime,
+			</if>
+			<if test="updatedDatetime != null">
+				updatedDatetime,
+			</if>
+			<if test="description != null">
+				description,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id},
+			</if>
+			<if test="code != null">
+				#{code},
+			</if>
+			<if test="name != null">
+				#{name},
+			</if>
+			<if test="fitToMinKm != null">
+				#{fitToMinKm},
+			</if>
+			<if test="fitToMaxKm != null">
+				#{fitToMaxKm},
+			</if>
+			<if test="fitToMinDaysUsed != null">
+				#{fitToMinDaysUsed},
+			</if>
+			<if test="fitToMaxDaysUsed != null">
+				#{fitToMaxDaysUsed},
+			</if>
+			<if test="fitToEmissionVolume != null">
+				#{fitToEmissionVolume},
+			</if>
+			<if test="fitToVehicleScope != null">
+				#{fitToVehicleScope},
+			</if>
+			<if test="fitToCity != null">
+				#{fitToCity},
+			</if>
+			<if test="beginDatetime != null">
+				#{beginDatetime},
+			</if>
+			<if test="endDatetime != null">
+				#{endDatetime},
+			</if>
+			<if test="moneyAmount != null">
+				#{moneyAmount},
+			</if>
+			<if test="ruleBrief != null">
+				#{ruleBrief},
+			</if>
+			<if test="ruleDetail != null">
+				#{ruleDetail},
+			</if>
+			<if test="color1 != null">
+				#{color1},
+			</if>
+			<if test="color2 != null">
+				#{color2},
+			</if>
+			<if test="actived != null">
+				#{actived},
+			</if>
+			<if test="deleted != null">
+				#{deleted},
+			</if>
+				<if test="createdDatetime != null">
+				#{createdDatetime},
+			</if>
+			<if test="updatedDatetime != null">
+				#{updatedDatetime},
+			</if>
+			<if test="description != null">
+				#{description},
+			</if>
+		</trim>
+		<selectKey resultType="java.lang.Long" order="AFTER"
+			keyProperty="id" keyColumn="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+
+</mapper>
