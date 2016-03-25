@@ -1,0 +1,1550 @@
+{
+    "description": "彩票中奖数据初始化导入",
+    "actived": "1",
+    "deleted": "0",
+    "createdDatetime": "CURRENT_TIMESTAMP",
+    "updatedDatetime": "CURRENT_TIMESTAMP",
+
+    "$" : [ "t_lottery_record",
+    {
+        "blue": 6,
+        "issueNumber": "2015001.0",
+        "red1": 1,
+        "red2": 7,
+        "red3": 9,
+        "red4": 16,
+        "red5": 20,
+        "red6": 23
+    },
+    {
+        "blue": 5,
+        "issueNumber": "2015002.0",
+        "red1": 7,
+        "red2": 15,
+        "red3": 16,
+        "red4": 25,
+        "red5": 28,
+        "red6": 32
+    },
+    {
+        "blue": 15,
+        "issueNumber": "2015003.0",
+        "red1": 10,
+        "red2": 15,
+        "red3": 20,
+        "red4": 23,
+        "red5": 24,
+        "red6": 31
+    },
+    {
+        "blue": 10,
+        "issueNumber": "2015004.0",
+        "red1": 2,
+        "red2": 14,
+        "red3": 15,
+        "red4": 16,
+        "red5": 23,
+        "red6": 24
+    },
+    {
+        "blue": 15,
+        "issueNumber": "2015005.0",
+        "red1": 7,
+        "red2": 10,
+        "red3": 16,
+        "red4": 17,
+        "red5": 18,
+        "red6": 32
+    },
+    {
+        "blue": 13,
+        "issueNumber": "2015006.0",
+        "red1": 1,
+        "red2": 10,
+        "red3": 11,
+        "red4": 29,
+        "red5": 31,
+        "red6": 33
+    },
+    {
+        "blue": 8,
+        "issueNumber": "2015007.0",
+        "red1": 1,
+        "red2": 7,
+        "red3": 9,
+        "red4": 17,
+        "red5": 20,
+        "red6": 33
+    },
+    {
+        "blue": 3,
+        "issueNumber": "2015008.0",
+        "red1": 4,
+        "red2": 7,
+        "red3": 10,
+        "red4": 16,
+        "red5": 20,
+        "red6": 22
+    },
+    {
+        "blue": 14,
+        "issueNumber": "2015009.0",
+        "red1": 4,
+        "red2": 7,
+        "red3": 14,
+        "red4": 17,
+        "red5": 21,
+        "red6": 25
+    },
+    {
+        "blue": 9,
+        "issueNumber": "2015010.0",
+        "red1": 1,
+        "red2": 2,
+        "red3": 3,
+        "red4": 8,
+        "red5": 21,
+        "red6": 31
+    },
+    {
+        "blue": 15,
+        "issueNumber": "2015011.0",
+        "red1": 4,
+        "red2": 14,
+        "red3": 15,
+        "red4": 17,
+        "red5": 18,
+        "red6": 20
+    },
+    {
+        "blue": 6,
+        "issueNumber": "2015012.0",
+        "red1": 3,
+        "red2": 5,
+        "red3": 22,
+        "red4": 23,
+        "red5": 29,
+        "red6": 31
+    },
+    {
+        "blue": 1,
+        "issueNumber": "2015013.0",
+        "red1": 8,
+        "red2": 9,
+        "red3": 24,
+        "red4": 25,
+        "red5": 26,
+        "red6": 29
+    },
+    {
+        "blue": 11,
+        "issueNumber": "2015014.0",
+        "red1": 2,
+        "red2": 12,
+        "red3": 16,
+        "red4": 19,
+        "red5": 27,
+        "red6": 30
+    },
+    {
+        "blue": 4,
+        "issueNumber": "2015015.0",
+        "red1": 1,
+        "red2": 7,
+        "red3": 20,
+        "red4": 24,
+        "red5": 25,
+        "red6": 33
+    },
+    {
+        "blue": 13,
+        "issueNumber": "2015016.0",
+        "red1": 2,
+        "red2": 6,
+        "red3": 10,
+        "red4": 15,
+        "red5": 17,
+        "red6": 31
+    },
+    {
+        "blue": 12,
+        "issueNumber": "2015017.0",
+        "red1": 13,
+        "red2": 18,
+        "red3": 20,
+        "red4": 25,
+        "red5": 27,
+        "red6": 33
+    },
+    {
+        "blue": 9,
+        "issueNumber": "2015018.0",
+        "red1": 6,
+        "red2": 9,
+        "red3": 12,
+        "red4": 14,
+        "red5": 28,
+        "red6": 29
+    },
+    {
+        "blue": 4,
+        "issueNumber": "2015019.0",
+        "red1": 2,
+        "red2": 6,
+        "red3": 11,
+        "red4": 19,
+        "red5": 25,
+        "red6": 26
+    },
+    {
+        "blue": 4,
+        "issueNumber": "2015020.0",
+        "red1": 1,
+        "red2": 4,
+        "red3": 7,
+        "red4": 19,
+        "red5": 22,
+        "red6": 23
+    },
+    {
+        "blue": 8,
+        "issueNumber": "2015021.0",
+        "red1": 14,
+        "red2": 15,
+        "red3": 16,
+        "red4": 17,
+        "red5": 27,
+        "red6": 28
+    },
+    {
+        "blue": 10,
+        "issueNumber": "2015022.0",
+        "red1": 4,
+        "red2": 7,
+        "red3": 10,
+        "red4": 16,
+        "red5": 23,
+        "red6": 25
+    },
+    {
+        "blue": 1,
+        "issueNumber": "2015023.0",
+        "red1": 8,
+        "red2": 9,
+        "red3": 10,
+        "red4": 13,
+        "red5": 29,
+        "red6": 30
+    },
+    {
+        "blue": 10,
+        "issueNumber": "2015024.0",
+        "red1": 9,
+        "red2": 11,
+        "red3": 16,
+        "red4": 18,
+        "red5": 23,
+        "red6": 24
+    },
+    {
+        "blue": 14,
+        "issueNumber": "2015025.0",
+        "red1": 10,
+        "red2": 11,
+        "red3": 12,
+        "red4": 15,
+        "red5": 27,
+        "red6": 32
+    },
+    {
+        "blue": 13,
+        "issueNumber": "2015026.0",
+        "red1": 2,
+        "red2": 13,
+        "red3": 17,
+        "red4": 21,
+        "red5": 22,
+        "red6": 33
+    },
+    {
+        "blue": 7,
+        "issueNumber": "2015027.0",
+        "red1": 5,
+        "red2": 7,
+        "red3": 9,
+        "red4": 16,
+        "red5": 26,
+        "red6": 29
+    },
+    {
+        "blue": 14,
+        "issueNumber": "2015028.0",
+        "red1": 4,
+        "red2": 7,
+        "red3": 10,
+        "red4": 26,
+        "red5": 27,
+        "red6": 28
+    },
+    {
+        "blue": 7,
+        "issueNumber": "2015029.0",
+        "red1": 7,
+        "red2": 14,
+        "red3": 15,
+        "red4": 19,
+        "red5": 21,
+        "red6": 28
+    },
+    {
+        "blue": 7,
+        "issueNumber": "2015030.0",
+        "red1": 8,
+        "red2": 11,
+        "red3": 14,
+        "red4": 15,
+        "red5": 16,
+        "red6": 26
+    },
+    {
+        "blue": 11,
+        "issueNumber": "2015031.0",
+        "red1": 1,
+        "red2": 5,
+        "red3": 7,
+        "red4": 22,
+        "red5": 26,
+        "red6": 32
+    },
+    {
+        "blue": 16,
+        "issueNumber": "2015032.0",
+        "red1": 11,
+        "red2": 14,
+        "red3": 16,
+        "red4": 18,
+        "red5": 29,
+        "red6": 32
+    },
+    {
+        "blue": 5,
+        "issueNumber": "2015033.0",
+        "red1": 3,
+        "red2": 6,
+        "red3": 21,
+        "red4": 29,
+        "red5": 31,
+        "red6": 32
+    },
+    {
+        "blue": 13,
+        "issueNumber": "2015034.0",
+        "red1": 12,
+        "red2": 13,
+        "red3": 17,
+        "red4": 18,
+        "red5": 20,
+        "red6": 27
+    },
+    {
+        "blue": 3,
+        "issueNumber": "2015035.0",
+        "red1": 1,
+        "red2": 8,
+        "red3": 9,
+        "red4": 22,
+        "red5": 24,
+        "red6": 33
+    },
+    {
+        "blue": 3,
+        "issueNumber": "2015036.0",
+        "red1": 4,
+        "red2": 6,
+        "red3": 16,
+        "red4": 17,
+        "red5": 26,
+        "red6": 33
+    },
+    {
+        "blue": 3,
+        "issueNumber": "2015037.0",
+        "red1": 5,
+        "red2": 7,
+        "red3": 12,
+        "red4": 18,
+        "red5": 28,
+        "red6": 31
+    },
+    {
+        "blue": 14,
+        "issueNumber": "2015038.0",
+        "red1": 5,
+        "red2": 6,
+        "red3": 11,
+        "red4": 12,
+        "red5": 14,
+        "red6": 33
+    },
+    {
+        "blue": 12,
+        "issueNumber": "2015039.0",
+        "red1": 1,
+        "red2": 13,
+        "red3": 15,
+        "red4": 26,
+        "red5": 29,
+        "red6": 30
+    },
+    {
+        "blue": 16,
+        "issueNumber": "2015040.0",
+        "red1": 13,
+        "red2": 16,
+        "red3": 18,
+        "red4": 27,
+        "red5": 30,
+        "red6": 32
+    },
+    {
+        "blue": 6,
+        "issueNumber": "2015041.0",
+        "red1": 4,
+        "red2": 9,
+        "red3": 11,
+        "red4": 17,
+        "red5": 21,
+        "red6": 25
+    },
+    {
+        "blue": 8,
+        "issueNumber": "2015042.0",
+        "red1": 9,
+        "red2": 10,
+        "red3": 19,
+        "red4": 21,
+        "red5": 23,
+        "red6": 32
+    },
+    {
+        "blue": 15,
+        "issueNumber": "2015043.0",
+        "red1": 11,
+        "red2": 12,
+        "red3": 15,
+        "red4": 24,
+        "red5": 26,
+        "red6": 27
+    },
+    {
+        "blue": 2,
+        "issueNumber": "2015044.0",
+        "red1": 2,
+        "red2": 3,
+        "red3": 4,
+        "red4": 13,
+        "red5": 14,
+        "red6": 16
+    },
+    {
+        "blue": 7,
+        "issueNumber": "2015045.0",
+        "red1": 1,
+        "red2": 5,
+        "red3": 13,
+        "red4": 22,
+        "red5": 30,
+        "red6": 31
+    },
+    {
+        "blue": 1,
+        "issueNumber": "2015046.0",
+        "red1": 5,
+        "red2": 7,
+        "red3": 10,
+        "red4": 14,
+        "red5": 23,
+        "red6": 31
+    },
+    {
+        "blue": 9,
+        "issueNumber": "2015047.0",
+        "red1": 2,
+        "red2": 3,
+        "red3": 20,
+        "red4": 24,
+        "red5": 26,
+        "red6": 27
+    },
+    {
+        "blue": 10,
+        "issueNumber": "2015048.0",
+        "red1": 13,
+        "red2": 16,
+        "red3": 17,
+        "red4": 22,
+        "red5": 25,
+        "red6": 27
+    },
+    {
+        "blue": 5,
+        "issueNumber": "2015049.0",
+        "red1": 7,
+        "red2": 12,
+        "red3": 14,
+        "red4": 17,
+        "red5": 20,
+        "red6": 23
+    },
+    {
+        "blue": 4,
+        "issueNumber": "2015050.0",
+        "red1": 3,
+        "red2": 9,
+        "red3": 12,
+        "red4": 16,
+        "red5": 17,
+        "red6": 31
+    },
+    {
+        "blue": 9,
+        "issueNumber": "2015051.0",
+        "red1": 4,
+        "red2": 10,
+        "red3": 24,
+        "red4": 26,
+        "red5": 28,
+        "red6": 32
+    },
+    {
+        "blue": 12,
+        "issueNumber": "2015052.0",
+        "red1": 2,
+        "red2": 4,
+        "red3": 11,
+        "red4": 16,
+        "red5": 25,
+        "red6": 26
+    },
+    {
+        "blue": 10,
+        "issueNumber": "2015053.0",
+        "red1": 3,
+        "red2": 7,
+        "red3": 17,
+        "red4": 22,
+        "red5": 32,
+        "red6": 33
+    },
+    {
+        "blue": 7,
+        "issueNumber": "2015054.0",
+        "red1": 1,
+        "red2": 2,
+        "red3": 7,
+        "red4": 10,
+        "red5": 22,
+        "red6": 26
+    },
+    {
+        "blue": 2,
+        "issueNumber": "2015055.0",
+        "red1": 1,
+        "red2": 10,
+        "red3": 15,
+        "red4": 18,
+        "red5": 19,
+        "red6": 28
+    },
+    {
+        "blue": 14,
+        "issueNumber": "2015056.0",
+        "red1": 1,
+        "red2": 7,
+        "red3": 8,
+        "red4": 16,
+        "red5": 18,
+        "red6": 20
+    },
+    {
+        "blue": 4,
+        "issueNumber": "2015057.0",
+        "red1": 9,
+        "red2": 20,
+        "red3": 24,
+        "red4": 25,
+        "red5": 26,
+        "red6": 32
+    },
+    {
+        "blue": 15,
+        "issueNumber": "2015058.0",
+        "red1": 2,
+        "red2": 9,
+        "red3": 10,
+        "red4": 18,
+        "red5": 19,
+        "red6": 20
+    },
+    {
+        "blue": 14,
+        "issueNumber": "2015059.0",
+        "red1": 2,
+        "red2": 6,
+        "red3": 9,
+        "red4": 16,
+        "red5": 25,
+        "red6": 32
+    },
+    {
+        "blue": 13,
+        "issueNumber": "2015060.0",
+        "red1": 1,
+        "red2": 3,
+        "red3": 18,
+        "red4": 27,
+        "red5": 31,
+        "red6": 32
+    },
+    {
+        "blue": 4,
+        "issueNumber": "2015061.0",
+        "red1": 6,
+        "red2": 18,
+        "red3": 22,
+        "red4": 26,
+        "red5": 32,
+        "red6": 33
+    },
+    {
+        "blue": 16,
+        "issueNumber": "2015062.0",
+        "red1": 9,
+        "red2": 14,
+        "red3": 15,
+        "red4": 18,
+        "red5": 21,
+        "red6": 26
+    },
+    {
+        "blue": 12,
+        "issueNumber": "2015063.0",
+        "red1": 1,
+        "red2": 7,
+        "red3": 9,
+        "red4": 16,
+        "red5": 22,
+        "red6": 32
+    },
+    {
+        "blue": 1,
+        "issueNumber": "2015064.0",
+        "red1": 11,
+        "red2": 12,
+        "red3": 14,
+        "red4": 17,
+        "red5": 23,
+        "red6": 27
+    },
+    {
+        "blue": 12,
+        "issueNumber": "2015065.0",
+        "red1": 8,
+        "red2": 10,
+        "red3": 14,
+        "red4": 19,
+        "red5": 26,
+        "red6": 29
+    },
+    {
+        "blue": 16,
+        "issueNumber": "2015066.0",
+        "red1": 5,
+        "red2": 8,
+        "red3": 11,
+        "red4": 17,
+        "red5": 24,
+        "red6": 28
+    },
+    {
+        "blue": 14,
+        "issueNumber": "2015067.0",
+        "red1": 2,
+        "red2": 5,
+        "red3": 8,
+        "red4": 24,
+        "red5": 25,
+        "red6": 31
+    },
+    {
+        "blue": 10,
+        "issueNumber": "2015068.0",
+        "red1": 6,
+        "red2": 15,
+        "red3": 18,
+        "red4": 21,
+        "red5": 26,
+        "red6": 27
+    },
+    {
+        "blue": 15,
+        "issueNumber": "2015069.0",
+        "red1": 1,
+        "red2": 13,
+        "red3": 17,
+        "red4": 18,
+        "red5": 23,
+        "red6": 30
+    },
+    {
+        "blue": 15,
+        "issueNumber": "2015070.0",
+        "red1": 1,
+        "red2": 7,
+        "red3": 13,
+        "red4": 19,
+        "red5": 21,
+        "red6": 29
+    },
+    {
+        "blue": 8,
+        "issueNumber": "2015071.0",
+        "red1": 8,
+        "red2": 18,
+        "red3": 20,
+        "red4": 28,
+        "red5": 29,
+        "red6": 31
+    },
+    {
+        "blue": 5,
+        "issueNumber": "2015072.0",
+        "red1": 1,
+        "red2": 3,
+        "red3": 5,
+        "red4": 20,
+        "red5": 21,
+        "red6": 31
+    },
+    {
+        "blue": 4,
+        "issueNumber": "2015073.0",
+        "red1": 1,
+        "red2": 2,
+        "red3": 17,
+        "red4": 22,
+        "red5": 26,
+        "red6": 27
+    },
+    {
+        "blue": 8,
+        "issueNumber": "2015074.0",
+        "red1": 4,
+        "red2": 7,
+        "red3": 21,
+        "red4": 25,
+        "red5": 26,
+        "red6": 29
+    },
+    {
+        "blue": 4,
+        "issueNumber": "2015075.0",
+        "red1": 6,
+        "red2": 11,
+        "red3": 13,
+        "red4": 19,
+        "red5": 21,
+        "red6": 32
+    },
+    {
+        "blue": 9,
+        "issueNumber": "2015076.0",
+        "red1": 1,
+        "red2": 9,
+        "red3": 10,
+        "red4": 19,
+        "red5": 23,
+        "red6": 27
+    },
+    {
+        "blue": 16,
+        "issueNumber": "2015077.0",
+        "red1": 1,
+        "red2": 6,
+        "red3": 8,
+        "red4": 10,
+        "red5": 13,
+        "red6": 27
+    },
+    {
+        "blue": 2,
+        "issueNumber": "2015078.0",
+        "red1": 3,
+        "red2": 7,
+        "red3": 20,
+        "red4": 22,
+        "red5": 26,
+        "red6": 29
+    },
+    {
+        "blue": 11,
+        "issueNumber": "2015079.0",
+        "red1": 9,
+        "red2": 14,
+        "red3": 15,
+        "red4": 20,
+        "red5": 26,
+        "red6": 32
+    },
+    {
+        "blue": 2,
+        "issueNumber": "2015080.0",
+        "red1": 14,
+        "red2": 17,
+        "red3": 25,
+        "red4": 27,
+        "red5": 28,
+        "red6": 30
+    },
+    {
+        "blue": 13,
+        "issueNumber": "2015081.0",
+        "red1": 13,
+        "red2": 20,
+        "red3": 22,
+        "red4": 26,
+        "red5": 28,
+        "red6": 31
+    },
+    {
+        "blue": 7,
+        "issueNumber": "2015082.0",
+        "red1": 2,
+        "red2": 8,
+        "red3": 9,
+        "red4": 14,
+        "red5": 28,
+        "red6": 30
+    },
+    {
+        "blue": 5,
+        "issueNumber": "2015083.0",
+        "red1": 6,
+        "red2": 7,
+        "red3": 16,
+        "red4": 18,
+        "red5": 29,
+        "red6": 32
+    },
+    {
+        "blue": 15,
+        "issueNumber": "2015084.0",
+        "red1": 15,
+        "red2": 18,
+        "red3": 20,
+        "red4": 22,
+        "red5": 28,
+        "red6": 29
+    },
+    {
+        "blue": 5,
+        "issueNumber": "2015085.0",
+        "red1": 2,
+        "red2": 8,
+        "red3": 25,
+        "red4": 27,
+        "red5": 28,
+        "red6": 29
+    },
+    {
+        "blue": 12,
+        "issueNumber": "2015086.0",
+        "red1": 5,
+        "red2": 6,
+        "red3": 8,
+        "red4": 16,
+        "red5": 18,
+        "red6": 22
+    },
+    {
+        "blue": 11,
+        "issueNumber": "2015087.0",
+        "red1": 9,
+        "red2": 15,
+        "red3": 16,
+        "red4": 19,
+        "red5": 20,
+        "red6": 28
+    },
+    {
+        "blue": 9,
+        "issueNumber": "2015088.0",
+        "red1": 2,
+        "red2": 12,
+        "red3": 20,
+        "red4": 24,
+        "red5": 29,
+        "red6": 31
+    },
+    {
+        "blue": 1,
+        "issueNumber": "2015089.0",
+        "red1": 12,
+        "red2": 14,
+        "red3": 19,
+        "red4": 27,
+        "red5": 28,
+        "red6": 29
+    },
+    {
+        "blue": 15,
+        "issueNumber": "2015090.0",
+        "red1": 10,
+        "red2": 12,
+        "red3": 14,
+        "red4": 22,
+        "red5": 25,
+        "red6": 33
+    },
+    {
+        "blue": 11,
+        "issueNumber": "2015091.0",
+        "red1": 5,
+        "red2": 7,
+        "red3": 17,
+        "red4": 19,
+        "red5": 22,
+        "red6": 31
+    },
+    {
+        "blue": 1,
+        "issueNumber": "2015092.0",
+        "red1": 9,
+        "red2": 15,
+        "red3": 19,
+        "red4": 21,
+        "red5": 26,
+        "red6": 27
+    },
+    {
+        "blue": 8,
+        "issueNumber": "2015093.0",
+        "red1": 1,
+        "red2": 3,
+        "red3": 13,
+        "red4": 21,
+        "red5": 25,
+        "red6": 31
+    },
+    {
+        "blue": 10,
+        "issueNumber": "2015094.0",
+        "red1": 1,
+        "red2": 4,
+        "red3": 6,
+        "red4": 13,
+        "red5": 16,
+        "red6": 17
+    },
+    {
+        "blue": 4,
+        "issueNumber": "2015095.0",
+        "red1": 4,
+        "red2": 15,
+        "red3": 21,
+        "red4": 28,
+        "red5": 30,
+        "red6": 31
+    },
+    {
+        "blue": 7,
+        "issueNumber": "2015096.0",
+        "red1": 6,
+        "red2": 16,
+        "red3": 17,
+        "red4": 23,
+        "red5": 24,
+        "red6": 31
+    },
+    {
+        "blue": 4,
+        "issueNumber": "2015097.0",
+        "red1": 9,
+        "red2": 12,
+        "red3": 14,
+        "red4": 20,
+        "red5": 26,
+        "red6": 27
+    },
+    {
+        "blue": 1,
+        "issueNumber": "2015098.0",
+        "red1": 6,
+        "red2": 9,
+        "red3": 13,
+        "red4": 26,
+        "red5": 27,
+        "red6": 33
+    },
+    {
+        "blue": 9,
+        "issueNumber": "2015099.0",
+        "red1": 6,
+        "red2": 7,
+        "red3": 10,
+        "red4": 11,
+        "red5": 14,
+        "red6": 22
+    },
+    {
+        "blue": 8,
+        "issueNumber": "2015100.0",
+        "red1": 2,
+        "red2": 3,
+        "red3": 11,
+        "red4": 17,
+        "red5": 19,
+        "red6": 21
+    },
+    {
+        "blue": 5,
+        "issueNumber": "2015101.0",
+        "red1": 8,
+        "red2": 16,
+        "red3": 22,
+        "red4": 24,
+        "red5": 28,
+        "red6": 29
+    },
+    {
+        "blue": 6,
+        "issueNumber": "2015102.0",
+        "red1": 7,
+        "red2": 9,
+        "red3": 12,
+        "red4": 14,
+        "red5": 21,
+        "red6": 23
+    },
+    {
+        "blue": 14,
+        "issueNumber": "2015103.0",
+        "red1": 6,
+        "red2": 8,
+        "red3": 13,
+        "red4": 26,
+        "red5": 30,
+        "red6": 32
+    },
+    {
+        "blue": 1,
+        "issueNumber": "2015104.0",
+        "red1": 9,
+        "red2": 18,
+        "red3": 21,
+        "red4": 23,
+        "red5": 25,
+        "red6": 26
+    },
+    {
+        "blue": 12,
+        "issueNumber": "2015105.0",
+        "red1": 9,
+        "red2": 10,
+        "red3": 16,
+        "red4": 19,
+        "red5": 20,
+        "red6": 26
+    },
+    {
+        "blue": 13,
+        "issueNumber": "2015106.0",
+        "red1": 1,
+        "red2": 3,
+        "red3": 4,
+        "red4": 23,
+        "red5": 31,
+        "red6": 32
+    },
+    {
+        "blue": 8,
+        "issueNumber": "2015107.0",
+        "red1": 7,
+        "red2": 14,
+        "red3": 16,
+        "red4": 18,
+        "red5": 21,
+        "red6": 25
+    },
+    {
+        "blue": 15,
+        "issueNumber": "2015108.0",
+        "red1": 2,
+        "red2": 12,
+        "red3": 19,
+        "red4": 22,
+        "red5": 24,
+        "red6": 27
+    },
+    {
+        "blue": 13,
+        "issueNumber": "2015109.0",
+        "red1": 1,
+        "red2": 8,
+        "red3": 9,
+        "red4": 16,
+        "red5": 32,
+        "red6": 33
+    },
+    {
+        "blue": 4,
+        "issueNumber": "2015110.0",
+        "red1": 5,
+        "red2": 7,
+        "red3": 16,
+        "red4": 17,
+        "red5": 22,
+        "red6": 23
+    },
+    {
+        "blue": 12,
+        "issueNumber": "2015111.0",
+        "red1": 8,
+        "red2": 14,
+        "red3": 16,
+        "red4": 18,
+        "red5": 20,
+        "red6": 30
+    },
+    {
+        "blue": 11,
+        "issueNumber": "2015112.0",
+        "red1": 1,
+        "red2": 3,
+        "red3": 10,
+        "red4": 19,
+        "red5": 20,
+        "red6": 27
+    },
+    {
+        "blue": 12,
+        "issueNumber": "2015113.0",
+        "red1": 1,
+        "red2": 5,
+        "red3": 7,
+        "red4": 8,
+        "red5": 19,
+        "red6": 27
+    },
+    {
+        "blue": 1,
+        "issueNumber": "2015114.0",
+        "red1": 4,
+        "red2": 7,
+        "red3": 9,
+        "red4": 13,
+        "red5": 21,
+        "red6": 26
+    },
+    {
+        "blue": 3,
+        "issueNumber": "2015115.0",
+        "red1": 1,
+        "red2": 7,
+        "red3": 8,
+        "red4": 14,
+        "red5": 24,
+        "red6": 32
+    },
+    {
+        "blue": 11,
+        "issueNumber": "2015116.0",
+        "red1": 4,
+        "red2": 6,
+        "red3": 15,
+        "red4": 23,
+        "red5": 26,
+        "red6": 28
+    },
+    {
+        "blue": 12,
+        "issueNumber": "2015117.0",
+        "red1": 4,
+        "red2": 11,
+        "red3": 12,
+        "red4": 18,
+        "red5": 26,
+        "red6": 32
+    },
+    {
+        "blue": 12,
+        "issueNumber": "2015118.0",
+        "red1": 1,
+        "red2": 4,
+        "red3": 11,
+        "red4": 21,
+        "red5": 23,
+        "red6": 31
+    },
+    {
+        "blue": 8,
+        "issueNumber": "2015119.0",
+        "red1": 2,
+        "red2": 8,
+        "red3": 10,
+        "red4": 18,
+        "red5": 23,
+        "red6": 31
+    },
+    {
+        "blue": 16,
+        "issueNumber": "2015120.0",
+        "red1": 16,
+        "red2": 21,
+        "red3": 24,
+        "red4": 26,
+        "red5": 27,
+        "red6": 29
+    },
+    {
+        "blue": 12,
+        "issueNumber": "2015121.0",
+        "red1": 1,
+        "red2": 3,
+        "red3": 20,
+        "red4": 21,
+        "red5": 28,
+        "red6": 29
+    },
+    {
+        "blue": 7,
+        "issueNumber": "2015122.0",
+        "red1": 5,
+        "red2": 7,
+        "red3": 11,
+        "red4": 16,
+        "red5": 22,
+        "red6": 25
+    },
+    {
+        "blue": 7,
+        "issueNumber": "2015123.0",
+        "red1": 5,
+        "red2": 8,
+        "red3": 9,
+        "red4": 12,
+        "red5": 22,
+        "red6": 28
+    },
+    {
+        "blue": 1,
+        "issueNumber": "2015124.0",
+        "red1": 2,
+        "red2": 3,
+        "red3": 5,
+        "red4": 12,
+        "red5": 18,
+        "red6": 27
+    },
+    {
+        "blue": 10,
+        "issueNumber": "2015125.0",
+        "red1": 5,
+        "red2": 13,
+        "red3": 22,
+        "red4": 27,
+        "red5": 30,
+        "red6": 33
+    },
+    {
+        "blue": 12,
+        "issueNumber": "2015126.0",
+        "red1": 10,
+        "red2": 11,
+        "red3": 15,
+        "red4": 20,
+        "red5": 23,
+        "red6": 29
+    },
+    {
+        "blue": 6,
+        "issueNumber": "2015127.0",
+        "red1": 7,
+        "red2": 10,
+        "red3": 19,
+        "red4": 22,
+        "red5": 27,
+        "red6": 33
+    },
+    {
+        "blue": 6,
+        "issueNumber": "2015128.0",
+        "red1": 1,
+        "red2": 3,
+        "red3": 8,
+        "red4": 11,
+        "red5": 22,
+        "red6": 28
+    },
+    {
+        "blue": 4,
+        "issueNumber": "2015129.0",
+        "red1": 5,
+        "red2": 8,
+        "red3": 11,
+        "red4": 16,
+        "red5": 18,
+        "red6": 27
+    },
+    {
+        "blue": 10,
+        "issueNumber": "2015130.0",
+        "red1": 6,
+        "red2": 14,
+        "red3": 15,
+        "red4": 16,
+        "red5": 17,
+        "red6": 22
+    },
+    {
+        "blue": 3,
+        "issueNumber": "2015131.0",
+        "red1": 10,
+        "red2": 12,
+        "red3": 13,
+        "red4": 19,
+        "red5": 22,
+        "red6": 26
+    },
+    {
+        "blue": 1,
+        "issueNumber": "2015132.0",
+        "red1": 3,
+        "red2": 5,
+        "red3": 11,
+        "red4": 28,
+        "red5": 30,
+        "red6": 33
+    },
+    {
+        "blue": 15,
+        "issueNumber": "2015133.0",
+        "red1": 2,
+        "red2": 3,
+        "red3": 13,
+        "red4": 20,
+        "red5": 22,
+        "red6": 24
+    },
+    {
+        "blue": 4,
+        "issueNumber": "2015134.0",
+        "red1": 2,
+        "red2": 5,
+        "red3": 14,
+        "red4": 19,
+        "red5": 27,
+        "red6": 31
+    },
+    {
+        "blue": 7,
+        "issueNumber": "2015135.0",
+        "red1": 1,
+        "red2": 12,
+        "red3": 14,
+        "red4": 18,
+        "red5": 26,
+        "red6": 32
+    },
+    {
+        "blue": 1,
+        "issueNumber": "2015136.0",
+        "red1": 2,
+        "red2": 5,
+        "red3": 12,
+        "red4": 23,
+        "red5": 28,
+        "red6": 29
+    },
+    {
+        "blue": 12,
+        "issueNumber": "2015137.0",
+        "red1": 14,
+        "red2": 22,
+        "red3": 23,
+        "red4": 27,
+        "red5": 28,
+        "red6": 31
+    },
+    {
+        "blue": 11,
+        "issueNumber": "2015138.0",
+        "red1": 1,
+        "red2": 2,
+        "red3": 8,
+        "red4": 16,
+        "red5": 19,
+        "red6": 24
+    },
+    {
+        "blue": 9,
+        "issueNumber": "2015139.0",
+        "red1": 1,
+        "red2": 10,
+        "red3": 13,
+        "red4": 18,
+        "red5": 25,
+        "red6": 27
+    },
+    {
+        "blue": 12,
+        "issueNumber": "2015140.0",
+        "red1": 6,
+        "red2": 20,
+        "red3": 28,
+        "red4": 29,
+        "red5": 30,
+        "red6": 31
+    },
+    {
+        "blue": 2,
+        "issueNumber": "2015141.0",
+        "red1": 3,
+        "red2": 8,
+        "red3": 19,
+        "red4": 25,
+        "red5": 27,
+        "red6": 28
+    },
+    {
+        "blue": 11,
+        "issueNumber": "2015142.0",
+        "red1": 13,
+        "red2": 17,
+        "red3": 19,
+        "red4": 20,
+        "red5": 22,
+        "red6": 25
+    },
+    {
+        "blue": 4,
+        "issueNumber": "2015143.0",
+        "red1": 13,
+        "red2": 15,
+        "red3": 19,
+        "red4": 20,
+        "red5": 21,
+        "red6": 32
+    },
+    {
+        "blue": 16,
+        "issueNumber": "2015144.0",
+        "red1": 1,
+        "red2": 4,
+        "red3": 7,
+        "red4": 15,
+        "red5": 28,
+        "red6": 32
+    },
+    {
+        "blue": 13,
+        "issueNumber": "2015145.0",
+        "red1": 7,
+        "red2": 8,
+        "red3": 15,
+        "red4": 19,
+        "red5": 20,
+        "red6": 24
+    },
+    {
+        "blue": 15,
+        "issueNumber": "2015146.0",
+        "red1": 16,
+        "red2": 17,
+        "red3": 21,
+        "red4": 28,
+        "red5": 30,
+        "red6": 32
+    },
+    {
+        "blue": 5,
+        "issueNumber": "2015147.0",
+        "red1": 8,
+        "red2": 9,
+        "red3": 16,
+        "red4": 23,
+        "red5": 24,
+        "red6": 30
+    },
+    {
+        "blue": 7,
+        "issueNumber": "2015148.0",
+        "red1": 9,
+        "red2": 13,
+        "red3": 14,
+        "red4": 22,
+        "red5": 26,
+        "red6": 27
+    },
+    {
+        "blue": 9,
+        "issueNumber": "2015149.0",
+        "red1": 9,
+        "red2": 10,
+        "red3": 20,
+        "red4": 21,
+        "red5": 22,
+        "red6": 33
+    },
+    {
+        "blue": 13,
+        "issueNumber": "2015150.0",
+        "red1": 1,
+        "red2": 3,
+        "red3": 8,
+        "red4": 11,
+        "red5": 29,
+        "red6": 31
+    },
+    {
+        "blue": 11,
+        "issueNumber": "2015151.0",
+        "red1": 5,
+        "red2": 6,
+        "red3": 8,
+        "red4": 23,
+        "red5": 31,
+        "red6": 32
+    },
+    {
+        "blue": 12,
+        "issueNumber": "2015152.0",
+        "red1": 11,
+        "red2": 18,
+        "red3": 19,
+        "red4": 21,
+        "red5": 29,
+        "red6": 32
+    },
+    {
+        "blue": 3,
+        "issueNumber": "2015153.0",
+        "red1": 8,
+        "red2": 11,
+        "red3": 15,
+        "red4": 22,
+        "red5": 27,
+        "red6": 29
+    },
+    {
+        "blue": 7,
+        "issueNumber": "2015154.0",
+        "red1": 7,
+        "red2": 9,
+        "red3": 11,
+        "red4": 15,
+        "red5": 18,
+        "red6": 25
+    }
+    ]
+}

@@ -33,6 +33,19 @@
 			<version>1.1.0-SNAPSHOT</version>
 	</dependency>
 	
+	<dependency>
+          <groupId>org.apache.velocity</groupId>
+          <artifactId>velocity</artifactId>
+          <version>1.7</version>
+        </dependency>
+        <dependency>
+          <groupId>com.google.code.gson</groupId>
+          <artifactId>gson</artifactId>
+          <version>2.2.4</version>
+          <scope>test</scope>
+          <type>jar</type>
+        </dependency>
+	
 	<!-- spring依赖的mybatis的jar包 -->
 	<dependency>
 		<groupId>org.mybatis</groupId>
@@ -198,11 +211,11 @@
 	</dependency>
 
 	<!-- 转换bson格式数据的工具类 -->
-	<dependency>
+	<!-- <dependency>
 		<groupId>com.meidusa.toolkit</groupId>
 		<artifactId>fastbson</artifactId>
 		<version>1.3.2</version>
-	</dependency>
+	</dependency> -->
 	<!-- 转换json格式数据的工具类 -->
 	<dependency>
 		<groupId>com.meidusa.toolkit</groupId>
